@@ -17,6 +17,14 @@ import { CountdownTypes, setTimeInfoTypes } from './types';
 import GlobalStyle from './styles/global';
 
 const App: React.FC = () => {
+  const usePrevious = <T extends unknown>(value: T): T | undefined => {
+    const ref = useRef<T>();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  };
+
   const [playCountDown, setPlayCount] = useState(false);
   const getPlayCount = (playcount: boolean) => setPlayCount(!playcount);
 
@@ -24,6 +32,22 @@ const App: React.FC = () => {
   const [unitMinutes, setUnitMinutes] = useState(0);
   const [decSeconds, setDecSeconds] = useState(0);
   const [unitSeconds, setUnitSeconds] = useState(0);
+  const states = {
+    decMinutes,
+    unitMinutes,
+    decSeconds,
+    unitSeconds,
+  };
+
+  const oldState = usePrevious(states);
+  const checkOldState = () => {
+    const checkDecSecChange = oldState?.decSeconds === decSeconds;
+    const checkUnitSecChange = unitSeconds === 0 && oldState?.unitSeconds === 9;
+    if (checkDecSecChange && checkUnitSecChange) {
+      setDecSeconds(decSeconds + 1);
+    }
+  };
+
   const handleClickTime = (setTimeInfos: setTimeInfoTypes) => {
     const { setTime, symbol, time } = setTimeInfos;
     const setTimeOperations: {[key: string]: number} = {
@@ -93,29 +117,7 @@ const App: React.FC = () => {
     return <span>{timer}</span>;
   };
 
-  // const previousState = {
-  //   decMinutes,
-  //   unitMinutes,
-  //   decSeconds,
-  //   unitSeconds,
-  // };
-  // const usePrevious = <T extends unknown>(value: T): T | undefined => {
-  //   const ref = useRef<T>();
-  //   useEffect(() => {
-  //     ref.current = value;
-  //   });
-  //   return ref.current;
-  // };
-  // const checkOldState = () => {
-  //   const oldState = usePrevious(previousState);
-  //   console.log(unitSeconds);
-  //   console.log(oldState?.unitSeconds);
-  //   if (unitSeconds === 0 && oldState?.unitSeconds === 9) {
-  //     setDecSeconds(decSeconds + 1);
-  //     setUnitSeconds(0.1);
-  //   }
-  // };
-  // checkOldState();
+  checkOldState();
 
   const checkWhatWillBeRender = () => {
     if (!playCountDown) {

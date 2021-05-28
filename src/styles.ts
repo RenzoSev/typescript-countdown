@@ -14,6 +14,7 @@ const Section = styled.section`
 
     span {
         font-weight: 600;
+        font-size: 5rem;
     }
 `;
 

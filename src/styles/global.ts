@@ -10,4 +10,10 @@ export default createGlobalStyle`
     body {
         background: #f6f6f6;
     }
+
+    button {
+        cursor: pointer;
+
+        transition: all 0.3s;
+    }
 `;
