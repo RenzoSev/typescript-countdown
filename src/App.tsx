@@ -17,7 +17,7 @@ import {
   convertMinToMili,
   convertSecToMili,
 } from './utils/convertTime';
-import fixTheTimeToDisplay from './utils/changeTimeToDisplay';
+import fixTimeToDisplay from './utils/changeTimeToDisplay';
 import { CountdownTypes, setTimeInfoTypes, timeTypes } from './types';
 
 import GlobalStyle from './styles/global';
@@ -72,7 +72,7 @@ const App: React.FC = () => {
     },
   };
 
-  const checkTimeToChange = (time: timeTypes) => {
+  const checkUnitToChangeDec = (time: timeTypes) => {
     const { dec, unit } = time;
 
     const checkDecSecChange = dec.dec === dec.oldDec;
@@ -85,11 +85,11 @@ const App: React.FC = () => {
   const checkOldState = () => {
     const { seconds, minutes } = dataTime;
 
-    checkTimeToChange(seconds);
-    checkTimeToChange(minutes);
+    checkUnitToChangeDec(seconds);
+    checkUnitToChangeDec(minutes);
   };
 
-  const handleClickTime = (setTimeInfos: setTimeInfoTypes) => {
+  const handleClickTime = (setTimeInfos: setTimeInfoTypes, isDec: boolean) => {
     const { setTime, symbol, time } = setTimeInfos;
     const setTimeOperations: {[key: string]: number} = {
       '+': time + 1,
@@ -97,7 +97,8 @@ const App: React.FC = () => {
     };
 
     const operationResult = setTimeOperations[symbol];
-    const fixTimeResult = fixTheTimeToDisplay(operationResult);
+    const maximumTime = isDec ? 5 : 9;
+    const fixTimeResult = fixTimeToDisplay(operationResult, maximumTime);
     setTime(fixTimeResult);
   };
   const getCountdownTime = () => {

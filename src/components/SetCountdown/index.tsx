@@ -37,14 +37,14 @@ export default function SetCountdown(propsTime : propsTypes) {
         <div>
           <button
             type="button"
-            onClick={() => handleClickTime(clickDec.more)}
+            onClick={() => handleClickTime(clickDec.more, true)}
           >
             <MdKeyboardArrowUp />
           </button>
           <span>{dec.dec}</span>
           <button
             type="button"
-            onClick={() => handleClickTime(clickDec.less)}
+            onClick={() => handleClickTime(clickDec.less, true)}
           >
             <MdKeyboardArrowDown />
           </button>
@@ -52,14 +52,14 @@ export default function SetCountdown(propsTime : propsTypes) {
         <div>
           <button
             type="button"
-            onClick={() => handleClickTime(clickUnit.more)}
+            onClick={() => handleClickTime(clickUnit.more, false)}
           >
             <MdKeyboardArrowUp />
           </button>
           <span>{unit.unit}</span>
           <button
             type="button"
-            onClick={() => handleClickTime(clickUnit.less)}
+            onClick={() => handleClickTime(clickUnit.less, false)}
           >
             <MdKeyboardArrowDown />
           </button>

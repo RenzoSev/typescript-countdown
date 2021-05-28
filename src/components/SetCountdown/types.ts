@@ -25,7 +25,7 @@ export type propsTypes = {
         }
       },
   };
-  handleClickTime: (setTimeInfos: setTimeInfoTypes) => void;
+  handleClickTime: (setTimeInfos: setTimeInfoTypes, isDec: boolean) => void;
 }
 
 export type timeTypes = {
