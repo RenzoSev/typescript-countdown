@@ -82,11 +82,25 @@ const App: React.FC = () => {
       dec.setDec(dec.dec + 1);
     }
   };
+  const checkSecToChangeMin = () => {
+    const { seconds, minutes } = dataTime;
+    const { unit } = minutes;
+    const { dec } = seconds;
+
+    const checkUnitMinChange = unit.unit === unit.oldUnit;
+    const checkDecSecChange = dec.dec === 0 && dec.oldDec === 5;
+    const checkActualUnit = (unit.unit + 1) > 9 ? 0 : unit.unit + 1;
+
+    if (checkUnitMinChange && checkDecSecChange) {
+      unit.setUnit(checkActualUnit);
+    }
+  };
   const checkOldState = () => {
     const { seconds, minutes } = dataTime;
 
     checkUnitToChangeDec(seconds);
     checkUnitToChangeDec(minutes);
+    checkSecToChangeMin();
   };
 
   const handleClickTime = (setTimeInfos: setTimeInfoTypes, isDec: boolean) => {
