@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 import React, { useState, Dispatch, SetStateAction } from 'react';
 
 import {
@@ -7,8 +6,7 @@ import {
   MdKeyboardArrowDown,
 } from 'react-icons/md';
 
-import { propsTypes, timeTypes, objTimeTypes } from './types';
-import { setTimeInfoTypes } from '../../types';
+import { propsTypes, timeTypes } from './types';
 
 import Section from './styles';
 
@@ -22,7 +20,6 @@ export default function SetCountdown(propsTime : propsTypes) {
 
   const renderCountDown = (time: timeTypes) => {
     const { dec, unit } = time;
-
     const clickTime = {
       clickDec: {
         more: getTimeObj(dec.setDec, dec.dec, '+'),
@@ -33,7 +30,6 @@ export default function SetCountdown(propsTime : propsTypes) {
         less: getTimeObj(unit.setUnit, unit.unit, '-'),
       },
     };
-
     const { clickDec, clickUnit } = clickTime;
 
     return (

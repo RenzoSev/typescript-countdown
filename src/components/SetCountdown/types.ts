@@ -38,8 +38,3 @@ export type timeTypes = {
     setUnit: React.Dispatch<React.SetStateAction<number>>;
   }
 }
-
-export type objTimeTypes = {
-  time: number;
-  setTime: React.Dispatch<React.SetStateAction<number>>;
-}

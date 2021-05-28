@@ -1,11 +1,17 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Countdown from 'react-countdown';
 import SetCountdown from './components/SetCountdown';
 
 import Section from './styles';
 
+import {
+  convertDecAndUnit,
+  convertMinToMili,
+  convertSecToMili,
+} from './utils/convertTime';
+import fixTheTimeToDisplay from './utils/changeTimeToDisplay';
 import { CountdownTypes, setTimeInfoTypes } from './types';
 
 import GlobalStyle from './styles/global';
@@ -14,10 +20,10 @@ const App: React.FC = () => {
   const [playCountDown, setPlayCount] = useState(false);
   const getPlayCount = (playcount: boolean) => setPlayCount(!playcount);
 
-  const [decMinutes, setDecMinutes] = useState(1);
-  const [unitMinutes, setUnitMinutes] = useState(2);
-  const [decSeconds, setDecSeconds] = useState(3);
-  const [unitSeconds, setUnitSeconds] = useState(4);
+  const [decMinutes, setDecMinutes] = useState(0);
+  const [unitMinutes, setUnitMinutes] = useState(0);
+  const [decSeconds, setDecSeconds] = useState(0);
+  const [unitSeconds, setUnitSeconds] = useState(0);
   const handleClickTime = (setTimeInfos: setTimeInfoTypes) => {
     const { setTime, symbol, time } = setTimeInfos;
     const setTimeOperations: {[key: string]: number} = {
@@ -26,7 +32,8 @@ const App: React.FC = () => {
     };
 
     const operationResult = setTimeOperations[symbol];
-    setTime(operationResult);
+    const fixTimeResult = fixTheTimeToDisplay(operationResult);
+    setTime(fixTimeResult);
   };
   const dataTime = {
     minutes: {
@@ -49,6 +56,17 @@ const App: React.FC = () => {
         setUnit: setUnitSeconds,
       },
     },
+  };
+  const getCountdownTime = () => {
+    const minutes = convertDecAndUnit(decMinutes, unitMinutes);
+    const seconds = convertDecAndUnit(decSeconds, unitSeconds);
+
+    const filteredTime = {
+      minutes: convertMinToMili(minutes),
+      seconds: convertSecToMili(seconds),
+    };
+
+    return filteredTime.minutes + filteredTime.seconds;
   };
 
   const Completionist = () => <span>VQV!</span>;
@@ -75,6 +93,30 @@ const App: React.FC = () => {
     return <span>{timer}</span>;
   };
 
+  // const previousState = {
+  //   decMinutes,
+  //   unitMinutes,
+  //   decSeconds,
+  //   unitSeconds,
+  // };
+  // const usePrevious = <T extends unknown>(value: T): T | undefined => {
+  //   const ref = useRef<T>();
+  //   useEffect(() => {
+  //     ref.current = value;
+  //   });
+  //   return ref.current;
+  // };
+  // const checkOldState = () => {
+  //   const oldState = usePrevious(previousState);
+  //   console.log(unitSeconds);
+  //   console.log(oldState?.unitSeconds);
+  //   if (unitSeconds === 0 && oldState?.unitSeconds === 9) {
+  //     setDecSeconds(decSeconds + 1);
+  //     setUnitSeconds(0.1);
+  //   }
+  // };
+  // checkOldState();
+
   const checkWhatWillBeRender = () => {
     if (!playCountDown) {
       return (
@@ -86,7 +128,7 @@ const App: React.FC = () => {
     }
     return (
       <Countdown
-        date={Date.now() + 3000}
+        date={Date.now() + getCountdownTime()}
         renderer={renderer}
         autoStart={playCountDown}
       />
@@ -102,7 +144,7 @@ const App: React.FC = () => {
           type="button"
           onClick={() => getPlayCount(playCountDown)}
         >
-          oi!
+          {playCountDown ? 'stop' : 'goTrybe!'}
         </button>
       </Section>
     </div>
