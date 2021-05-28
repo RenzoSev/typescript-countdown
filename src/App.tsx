@@ -1,6 +1,12 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import Countdown from 'react-countdown';
 import SetCountdown from './components/SetCountdown';
 
@@ -12,7 +18,7 @@ import {
   convertSecToMili,
 } from './utils/convertTime';
 import fixTheTimeToDisplay from './utils/changeTimeToDisplay';
-import { CountdownTypes, setTimeInfoTypes } from './types';
+import { CountdownTypes, setTimeInfoTypes, timeTypes } from './types';
 
 import GlobalStyle from './styles/global';
 
@@ -38,14 +44,49 @@ const App: React.FC = () => {
     decSeconds,
     unitSeconds,
   };
-
   const oldState = usePrevious(states);
-  const checkOldState = () => {
-    const checkDecSecChange = oldState?.decSeconds === decSeconds;
-    const checkUnitSecChange = unitSeconds === 0 && oldState?.unitSeconds === 9;
+  const dataTime = {
+    minutes: {
+      dec: {
+        dec: decMinutes,
+        oldDec: oldState?.decMinutes,
+        setDec: setDecMinutes,
+      },
+      unit: {
+        unit: unitMinutes,
+        oldUnit: oldState?.unitMinutes,
+        setUnit: setUnitMinutes,
+      },
+    },
+    seconds: {
+      dec: {
+        dec: decSeconds,
+        oldDec: oldState?.decSeconds,
+        setDec: setDecSeconds,
+      },
+      unit: {
+        unit: unitSeconds,
+        oldUnit: oldState?.unitSeconds,
+        setUnit: setUnitSeconds,
+      },
+    },
+  };
+
+  const checkTimeToChange = (time: timeTypes) => {
+    const { dec, unit } = time;
+
+    const checkDecSecChange = dec.dec === dec.oldDec;
+    const checkUnitSecChange = unit.unit === 0 && unit.oldUnit === 9;
+
     if (checkDecSecChange && checkUnitSecChange) {
-      setDecSeconds(decSeconds + 1);
+      dec.setDec(dec.dec + 1);
     }
+  };
+  const checkOldState = () => {
+    const { seconds, minutes } = dataTime;
+
+    checkTimeToChange(seconds);
+    checkTimeToChange(minutes);
   };
 
   const handleClickTime = (setTimeInfos: setTimeInfoTypes) => {
@@ -58,28 +99,6 @@ const App: React.FC = () => {
     const operationResult = setTimeOperations[symbol];
     const fixTimeResult = fixTheTimeToDisplay(operationResult);
     setTime(fixTimeResult);
-  };
-  const dataTime = {
-    minutes: {
-      dec: {
-        dec: decMinutes,
-        setDec: setDecMinutes,
-      },
-      unit: {
-        unit: unitMinutes,
-        setUnit: setUnitMinutes,
-      },
-    },
-    seconds: {
-      dec: {
-        dec: decSeconds,
-        setDec: setDecSeconds,
-      },
-      unit: {
-        unit: unitSeconds,
-        setUnit: setUnitSeconds,
-      },
-    },
   };
   const getCountdownTime = () => {
     const minutes = convertDecAndUnit(decMinutes, unitMinutes);

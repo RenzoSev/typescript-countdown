@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { Dispatch, SetStateAction } from 'react';
 
 import {
   CountdownApi,
@@ -14,7 +15,19 @@ export type CountdownTypes = {
  }
 
 export type setTimeInfoTypes = {
-  setTime: React.Dispatch<React.SetStateAction<number>>;
+  setTime: Dispatch<SetStateAction<number>>;
   symbol: string;
   time: number;
  }
+
+export type timeTypes = {
+  dec: {
+    dec: number,
+    oldDec: number | undefined,
+    setDec: Dispatch<SetStateAction<number>>
+  },
+  unit: {
+    unit: number,
+    oldUnit: number | undefined,
+  },
+}
