@@ -6,7 +6,7 @@ import {
   MdKeyboardArrowDown,
 } from 'react-icons/md';
 
-import { propsTypes, timeTypes } from './types';
+import { buttonTypes, propsTypes, timeTypes } from './types';
 
 import Section from './styles';
 
@@ -18,8 +18,10 @@ export default function SetCountdown(propsTime : propsTypes) {
     { setTime, symbol, time }
   );
 
-  const renderCountDown = (time: timeTypes) => {
+  const renderCountDown = (time: timeTypes, buttonDisabled: buttonTypes) => {
     const { dec, unit } = time;
+    const { buttonDec, buttonUnit } = buttonDisabled;
+
     const clickTime = {
       clickDec: {
         more: getTimeObj(dec.setDec, dec.dec, '+'),
@@ -38,6 +40,7 @@ export default function SetCountdown(propsTime : propsTypes) {
           <button
             type="button"
             onClick={() => handleClickTime(clickDec.more, true)}
+            disabled={buttonDec}
           >
             <MdKeyboardArrowUp />
           </button>
@@ -53,6 +56,7 @@ export default function SetCountdown(propsTime : propsTypes) {
           <button
             type="button"
             onClick={() => handleClickTime(clickUnit.more, false)}
+            disabled={buttonUnit}
           >
             <MdKeyboardArrowUp />
           </button>
@@ -68,11 +72,25 @@ export default function SetCountdown(propsTime : propsTypes) {
     );
   };
 
+  const minButtonDec = minutes.dec.dec === 5;
+  const minButtonUnit = minButtonDec && minutes.unit.unit === 9;
+  const minutesButtonDisable = {
+    buttonDec: minButtonDec,
+    buttonUnit: minButtonUnit,
+  };
+
+  const secButtonDec = minButtonUnit && seconds.dec.dec === 5;
+  const secButtonUnit = secButtonDec && seconds.unit.unit === 9;
+  const secondsButtonDisable = {
+    buttonDec: secButtonDec,
+    buttonUnit: secButtonUnit,
+  };
+
   return (
     <Section>
-      {renderCountDown(minutes)}
+      {renderCountDown(minutes, minutesButtonDisable)}
       <p>:</p>
-      {renderCountDown(seconds)}
+      {renderCountDown(seconds, secondsButtonDisable)}
     </Section>
   );
 }

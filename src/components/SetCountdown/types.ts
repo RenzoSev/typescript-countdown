@@ -38,3 +38,8 @@ export type timeTypes = {
     setUnit: React.Dispatch<React.SetStateAction<number>>;
   }
 }
+
+export type buttonTypes = {
+  buttonDec: boolean,
+  buttonUnit: boolean,
+}

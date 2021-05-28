@@ -77,9 +77,10 @@ const App: React.FC = () => {
 
     const checkDecSecChange = dec.dec === dec.oldDec;
     const checkUnitSecChange = unit.unit === 0 && unit.oldUnit === 9;
+    const checkActualDec = (dec.dec + 1) > 5 ? 0 : dec.dec + 1;
 
     if (checkDecSecChange && checkUnitSecChange) {
-      dec.setDec(dec.dec + 1);
+      dec.setDec(checkActualDec);
     }
   };
   const checkSecToChangeMin = () => {
