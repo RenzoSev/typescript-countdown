@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { setTimeInfoTypes } from '../../types';
+import { setTimeInfoTypes } from '../../pages/App/types';
 
 export type propsTypes = {
     dataTime: {

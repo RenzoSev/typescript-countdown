@@ -4,22 +4,22 @@ import React, { useEffect, useState, useRef } from 'react';
 import Countdown from 'react-countdown';
 import { GoGear } from 'react-icons/go';
 
-import { Section, DivConfig } from './styles';
+import { Section, DivConfig } from '../../styles/styles';
 
 import {
   convertCountdownToNumbers,
   convertDecAndUnit,
   convertMinToMili,
   convertSecToMili,
-} from './utils/convertTime';
-import fixTimeToDisplay from './utils/changeTimeToDisplay';
+} from '../../utils/convertTime';
+import fixTimeToDisplay from '../../utils/changeTimeToDisplay';
 import { CountdownTypes, setTimeInfoTypes, timeTypes } from './types';
-import { getStorage, setStorage } from './helper/localStorage';
+import { getStorage, setStorage } from '../../helper/localStorage';
 
-import Presets from './components/Presets';
-import SetCountdown from './components/SetCountdown';
+import Presets from '../../components/Presets';
+import SetCountdown from '../../components/SetCountdown';
 
-import GlobalStyle from './styles/global';
+import GlobalStyle from '../../styles/global';
 
 const App: React.FC = () => {
   const usePrevious = <T extends unknown>(value: T): T | undefined => {
