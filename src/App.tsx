@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import Countdown from 'react-countdown';
-import SetCountdown from './components/SetCountdown';
+import { GoGear } from 'react-icons/go';
 
-import Section from './styles';
+import { Section, DivConfig } from './styles';
 
 import {
   convertCountdownToNumbers,
@@ -15,6 +15,9 @@ import {
 import fixTimeToDisplay from './utils/changeTimeToDisplay';
 import { CountdownTypes, setTimeInfoTypes, timeTypes } from './types';
 import { getStorage, setStorage } from './helper/localStorage';
+
+import Presets from './components/Presets';
+import SetCountdown from './components/SetCountdown';
 
 import GlobalStyle from './styles/global';
 
@@ -30,13 +33,13 @@ const App: React.FC = () => {
   const [playCountdown, setPlayCount] = useState(false);
   const getPlayCount = () => setPlayCount(!playCountdown);
 
-  const [countdown, setCountdown] = useState('00:00');
-  const saveCountDown = (timer: string) => setCountdown(timer);
-
   const [decMinutes, setDecMinutes] = useState(0);
   const [unitMinutes, setUnitMinutes] = useState(0);
   const [decSeconds, setDecSeconds] = useState(0);
   const [unitSeconds, setUnitSeconds] = useState(0);
+
+  const initalPresets = ['05:00', '08:00', '10:00'];
+  const [presets, setPresets] = useState(initalPresets);
 
   const states = {
     decMinutes,
@@ -191,7 +194,6 @@ const App: React.FC = () => {
   useEffect(() => {
     const countdownStorage = getStorage('countdown');
     if (countdownStorage) setLocalStorageToState(countdownStorage);
-    console.log(playCountdown);
   }, [playCountdown]);
 
   useEffect(() => {
@@ -200,8 +202,12 @@ const App: React.FC = () => {
   });
 
   return (
-    <div>
+    <>
       <GlobalStyle />
+      <DivConfig>
+        <GoGear />
+      </DivConfig>
+
       <Section>
         {checkWhatWillBeRender()}
         <button
@@ -210,8 +216,12 @@ const App: React.FC = () => {
         >
           {playCountdown ? 'Stop' : 'goTrybe!'}
         </button>
+        <Presets
+          presets={presets}
+          setLocalStorage={setLocalStorageToState}
+        />
       </Section>
-    </div>
+    </>
   );
 };
 
