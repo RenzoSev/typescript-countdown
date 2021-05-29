@@ -1,24 +1,20 @@
 /* eslint-disable no-unused-vars */
 
-import React, {
-  useEffect,
-  useState,
-  useRef,
-  Dispatch,
-  SetStateAction,
-} from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Countdown from 'react-countdown';
 import SetCountdown from './components/SetCountdown';
 
 import Section from './styles';
 
 import {
+  convertCountdownToNumbers,
   convertDecAndUnit,
   convertMinToMili,
   convertSecToMili,
 } from './utils/convertTime';
 import fixTimeToDisplay from './utils/changeTimeToDisplay';
 import { CountdownTypes, setTimeInfoTypes, timeTypes } from './types';
+import { getStorage, setStorage } from './helper/localStorage';
 
 import GlobalStyle from './styles/global';
 
@@ -31,13 +27,17 @@ const App: React.FC = () => {
     return ref.current;
   };
 
-  const [playCountDown, setPlayCount] = useState(false);
-  const getPlayCount = (playcount: boolean) => setPlayCount(!playcount);
+  const [playCountdown, setPlayCount] = useState(false);
+  const getPlayCount = () => setPlayCount(!playCountdown);
+
+  const [countdown, setCountdown] = useState('00:00');
+  const saveCountDown = (timer: string) => setCountdown(timer);
 
   const [decMinutes, setDecMinutes] = useState(0);
   const [unitMinutes, setUnitMinutes] = useState(0);
   const [decSeconds, setDecSeconds] = useState(0);
   const [unitSeconds, setUnitSeconds] = useState(0);
+
   const states = {
     decMinutes,
     unitMinutes,
@@ -103,6 +103,7 @@ const App: React.FC = () => {
     checkUnitToChangeDec(minutes);
     checkSecToChangeMin();
   };
+  checkOldState();
 
   const handleClickTime = (setTimeInfos: setTimeInfoTypes, isDec: boolean) => {
     const { setTime, symbol, time } = setTimeInfos;
@@ -142,6 +143,7 @@ const App: React.FC = () => {
     const { start } = api;
 
     const timer = `${minutes}:${seconds}`;
+    setStorage('countdown', timer);
 
     if (!autoStart) {
       start();
@@ -152,10 +154,8 @@ const App: React.FC = () => {
     return <span>{timer}</span>;
   };
 
-  checkOldState();
-
   const checkWhatWillBeRender = () => {
-    if (!playCountDown) {
+    if (!playCountdown) {
       return (
         <SetCountdown
           dataTime={dataTime}
@@ -167,10 +167,37 @@ const App: React.FC = () => {
       <Countdown
         date={Date.now() + getCountdownTime()}
         renderer={renderer}
-        autoStart={playCountDown}
+        autoStart={playCountdown}
+        controlled={false}
       />
     );
   };
+
+  const setLocalStorageToState = (countdownStorage: string) => {
+    const splitedCountdown = convertCountdownToNumbers(countdownStorage);
+    const timeCountdown = {
+      decMin: Number(splitedCountdown[0]),
+      unitMin: Number(splitedCountdown[1]),
+      decSec: Number(splitedCountdown[2]),
+      unitSec: Number(splitedCountdown[3]),
+    };
+
+    setDecMinutes(timeCountdown.decMin);
+    setUnitMinutes(timeCountdown.unitMin);
+    setDecSeconds(timeCountdown.decSec);
+    setUnitSeconds(timeCountdown.unitSec);
+  };
+
+  useEffect(() => {
+    const countdownStorage = getStorage('countdown');
+    if (countdownStorage) setLocalStorageToState(countdownStorage);
+    console.log(playCountdown);
+  }, [playCountdown]);
+
+  useEffect(() => {
+    const timer = `${decMinutes}${unitMinutes}:${decSeconds}${unitSeconds}`;
+    if (oldState) setStorage('countdown', timer);
+  });
 
   return (
     <div>
@@ -179,9 +206,9 @@ const App: React.FC = () => {
         {checkWhatWillBeRender()}
         <button
           type="button"
-          onClick={() => getPlayCount(playCountDown)}
+          onClick={() => getPlayCount()}
         >
-          {playCountDown ? 'stop' : 'goTrybe!'}
+          {playCountdown ? 'Stop' : 'goTrybe!'}
         </button>
       </Section>
     </div>
