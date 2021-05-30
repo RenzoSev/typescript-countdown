@@ -16,4 +16,10 @@ export default createGlobalStyle`
 
         transition: all 0.3s;
     }
+
+    a {
+        color: inherit;
+        
+        text-decoration: none;
+    }
 `;
