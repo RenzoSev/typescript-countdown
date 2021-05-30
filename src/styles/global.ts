@@ -13,7 +13,7 @@ export default createGlobalStyle`
 
     button {
         cursor: pointer;
-
+        color: ${(props) => props.theme.colors.text};
         transition: all 0.3s;
     }
 

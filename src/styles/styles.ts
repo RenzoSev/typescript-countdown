@@ -5,7 +5,7 @@ const DivChangePage = styled.div`
     left: 0;
     
     font-size: 1.3rem;
-    color: #525252;
+    color: ${(props) => props.theme.colors.primary};
     
     padding: 0.6rem;
 `;
