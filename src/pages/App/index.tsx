@@ -18,7 +18,7 @@ import dark from '../../styles/themes/dark';
 import GlobalStyle from '../../styles/global';
 
 const App: React.FC = () => {
-  const initalPresets = ['05:00', '08:00', '10:00'];
+  const initalPresets = ['05:00', '08:00', '10:00', '15:00'];
   const [presets, setPresets] = usePersistedState('presetsStorage', initalPresets);
 
   const [startMsg, setStartMsg] = usePersistedState('startMsg', 'goTrybe');
@@ -64,7 +64,6 @@ const App: React.FC = () => {
               setConfigsProps={setConfigsProps}
             />
           </Route>
-
           <Route path="/">
             <Countdown sharedProps={sharedProps} />
           </Route>

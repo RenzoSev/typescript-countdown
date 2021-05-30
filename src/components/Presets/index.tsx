@@ -2,6 +2,8 @@ import React from 'react';
 
 import propsPresetsTypes from './types';
 
+import DivPresets from './styles';
+
 export default function Presets(propsPresets: propsPresetsTypes) {
   const { presets, setLocalStorage, playCountdown } = propsPresets;
 
@@ -19,8 +21,8 @@ export default function Presets(propsPresets: propsPresetsTypes) {
   );
 
   return (
-    <div>
+    <DivPresets>
       {renderPresetsButtons()}
-    </div>
+    </DivPresets>
   );
 }

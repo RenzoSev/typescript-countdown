@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+    color: ${(props) => props.theme.colors.text};
+    
     * {
         margin: 0;
         padding: 0;
@@ -12,8 +14,12 @@ export default createGlobalStyle`
     }
 
     button {
-        cursor: pointer;
+        background: transparent;
+        border:  none;
+
         color: ${(props) => props.theme.colors.text};
+        
+        cursor: pointer;
         transition: all 0.3s;
     }
 
