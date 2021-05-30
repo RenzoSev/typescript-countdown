@@ -12,9 +12,9 @@ import usePersistedState from '../../helper/usePersistedToState';
 import Countdown from '../Countdown';
 import TimeConfigs from '../TimeConfigs';
 
+import DivSwitch from './styles';
 import light from '../../styles/themes/light';
 import dark from '../../styles/themes/dark';
-
 import GlobalStyle from '../../styles/global';
 
 const App: React.FC = () => {
@@ -24,7 +24,7 @@ const App: React.FC = () => {
   const [startMsg, setStartMsg] = usePersistedState('startMsg', 'goTrybe');
   const [endMsg, setEndMsg] = usePersistedState('endMsg', 'STOP');
 
-  const [theme, setTheme] = useState(light);
+  const [theme, setTheme] = usePersistedState('theme', light);
   const toggleTheme = () => {
     setTheme(theme.title === 'light' ? dark : light);
   };
@@ -43,17 +43,19 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <div>
-        <Switch
-          onChange={toggleTheme}
-          checked={theme.title === 'dark'}
-          checkedIcon={false}
-          uncheckedIcon={false}
-          height={10}
-          width={40}
-          handleDiameter={20}
-          offColor={shade(0.15, theme.colors.primary)}
-          onColor={theme.colors.secundary}
-        />
+        <DivSwitch>
+          <Switch
+            onChange={toggleTheme}
+            checked={theme.title === 'dark'}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={10}
+            width={40}
+            handleDiameter={18}
+            offColor={shade(0.15, theme.colors.primary)}
+            onColor={theme.colors.secundary}
+          />
+        </DivSwitch>
         <GlobalStyle />
         <SwitchRouter>
           <Route path="/settings">

@@ -24,6 +24,8 @@ const Section = styled.section`
 
         opacity: 48%;
 
+        color: #223324;
+
         &:hover {
           opacity: 35% !important;
         }
@@ -31,6 +33,10 @@ const Section = styled.section`
         &:active {
           transform: scale(0.93);
           opacity: 20% !important;
+        }
+
+        &:disabled {
+          opacity: 15%;
         }
       }
     }

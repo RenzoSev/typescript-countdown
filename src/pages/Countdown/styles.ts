@@ -8,7 +8,7 @@ const Section = styled.section`
 
     height: 100vh;
     
-    color: #525252;
+    color: ${(props) => props.theme.colors.text};
     font-size: 3rem;
     font-family: 'Montserrat', sans-serif;
 
