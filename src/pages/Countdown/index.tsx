@@ -13,12 +13,13 @@ import {
   convertSecToMili,
 } from '../../utils/convertTime';
 import fixTimeToDisplay from '../../utils/changeTimeToDisplay';
+
 import {
   CountdownTypes,
   setTimeInfoTypes,
   timeTypes,
-  PropsTypes,
 } from './types';
+import sharedPropsTypes from '../../types';
 
 import { getStorage, setStorage } from '../../helper/localStorage';
 import usePrevious from '../../helper/usePrevious';
@@ -26,10 +27,12 @@ import usePrevious from '../../helper/usePrevious';
 import Presets from '../../components/Presets';
 import SetCountdown from '../../components/SetCountdown';
 
-import { Section, DivConfig } from './styles';
+import Section from './styles';
+import DivChangePage from '../../styles/styles';
 
-const CountDown = (propsCountDown: PropsTypes) => {
-  const { presets } = propsCountDown;
+const CountDown = (propsCountDown: sharedPropsTypes) => {
+  const { sharedProps } = propsCountDown;
+  const { startMsg, endMsg, presets } = sharedProps;
 
   const [playCountdown, setPlayCount] = useState(false);
   const getPlayCount = () => setPlayCount(!playCountdown);
@@ -201,11 +204,11 @@ const CountDown = (propsCountDown: PropsTypes) => {
 
   return (
     <>
-      <DivConfig>
+      <DivChangePage>
         <Link to="/settings">
           <GoGear />
         </Link>
-      </DivConfig>
+      </DivChangePage>
 
       <Section>
         {checkWhatWillBeRender()}
@@ -213,7 +216,7 @@ const CountDown = (propsCountDown: PropsTypes) => {
           type="button"
           onClick={() => getPlayCount()}
         >
-          {playCountdown ? 'Stop' : 'goTrybe!'}
+          {playCountdown ? endMsg : startMsg}
         </button>
         <Presets
           presets={presets}

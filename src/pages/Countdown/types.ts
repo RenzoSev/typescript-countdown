@@ -7,10 +7,6 @@ import {
   CountdownTimeDeltaFormatted,
 } from 'react-countdown';
 
-export type PropsTypes = {
-  presets: string[];
-}
-
 export type CountdownTypes = {
     completed: boolean;
     formatted: CountdownTimeDeltaFormatted;

@@ -3,13 +3,20 @@
 
 import React, { ChangeEvent, useState } from 'react';
 
+import { Link } from 'react-router-dom';
+import { RiArrowGoBackLine } from 'react-icons/ri';
+
+import { convertNumbersToCountdown } from '../../utils/convertTime';
+
 import TimeConfigsTypes from './types';
 
 import { Section, DivPresets } from './styles';
-import { convertNumbersToCountdown } from '../../utils/convertTime';
+import DivChangePage from '../../styles/styles';
 
 export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
-  const { presets, setPresets } = propsConfigs;
+  const { sharedProps, setConfigsProps } = propsConfigs;
+  const { setPresets, setStartMsg, setEndMsg } = setConfigsProps;
+  const { presets } = sharedProps;
 
   const [localPresets, setLocalPresets] = useState(presets);
 
@@ -73,10 +80,36 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
       )));
   };
 
+  const renderInputMsg = (text: string, setMsg: React.Dispatch<React.SetStateAction<string>>) => (
+    <div>
+      <p>{text}</p>
+      <input
+        onChange={(e) => setMsg(e.target.value)}
+      />
+    </div>
+  );
+
   return (
     <Section>
+      <DivChangePage>
+        <Link to="/">
+          <RiArrowGoBackLine />
+        </Link>
+      </DivChangePage>
+
       <div>
         {renderPresets()}
+
+        <button
+          type="button"
+          onClick={() => setPresets(localPresets)}
+        >
+          Save
+        </button>
+
+        {renderInputMsg('Button Start', setStartMsg)}
+
+        {renderInputMsg('Button Stop', setEndMsg)}
       </div>
     </Section>
   );
