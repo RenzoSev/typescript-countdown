@@ -221,6 +221,7 @@ const CountDown = (propsCountDown: sharedPropsTypes) => {
         <Presets
           presets={presets}
           setLocalStorage={setLocalStorageToState}
+          playCountdown={playCountdown}
         />
       </Section>
     </>

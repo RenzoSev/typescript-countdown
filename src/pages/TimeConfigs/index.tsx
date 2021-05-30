@@ -1,7 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
 
-import React, { ChangeEvent, useState } from 'react';
+import React, {
+  ChangeEvent,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 
 import { Link } from 'react-router-dom';
 import { RiArrowGoBackLine } from 'react-icons/ri';
@@ -80,7 +85,7 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
       )));
   };
 
-  const renderInputMsg = (text: string, setMsg: React.Dispatch<React.SetStateAction<string>>) => (
+  const renderInputMsg = (text: string, setMsg: Dispatch<SetStateAction<string>>) => (
     <div>
       <p>{text}</p>
       <input

@@ -3,7 +3,7 @@ import React from 'react';
 import propsPresetsTypes from './types';
 
 export default function Presets(propsPresets: propsPresetsTypes) {
-  const { presets, setLocalStorage } = propsPresets;
+  const { presets, setLocalStorage, playCountdown } = propsPresets;
 
   const renderPresetsButtons = () => (
     presets.map((preset) => (
@@ -11,6 +11,7 @@ export default function Presets(propsPresets: propsPresetsTypes) {
         key={preset}
         type="button"
         onClick={() => setLocalStorage(preset)}
+        disabled={playCountdown}
       >
         {preset}
       </button>
