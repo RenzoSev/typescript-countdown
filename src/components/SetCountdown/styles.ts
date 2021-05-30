@@ -24,7 +24,7 @@ const Section = styled.section`
 
         opacity: 48%;
 
-        color: #223324;
+        color: ${(props) => props.theme.colors.secundary};
 
         &:hover {
           opacity: 35% !important;
