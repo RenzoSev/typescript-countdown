@@ -1,17 +1,33 @@
 /* eslint-disable no-unused-vars */
 
 import React, { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch as SwitchRouter } from 'react-router-dom';
+
+import { ThemeProvider, DefaultTheme, ThemeContext } from 'styled-components';
+import Switch from 'react-switch';
+import { shade } from 'polished';
+
 import usePersistedState from '../../helper/usePersistedToState';
 
 import Countdown from '../Countdown';
 import TimeConfigs from '../TimeConfigs';
 
+import light from '../../styles/themes/light';
+import dark from '../../styles/themes/dark';
+
+import GlobalStyle from '../../styles/global';
+
 const App: React.FC = () => {
   const initalPresets = ['05:00', '08:00', '10:00'];
   const [presets, setPresets] = usePersistedState('presetsStorage', initalPresets);
+
   const [startMsg, setStartMsg] = usePersistedState('startMsg', 'goTrybe');
   const [endMsg, setEndMsg] = usePersistedState('endMsg', 'STOP');
+
+  const [theme, setTheme] = useState(light);
+  const toggleTheme = () => {
+    setTheme(theme.title === 'light' ? dark : light);
+  };
 
   const sharedProps = {
     presets,
@@ -25,14 +41,34 @@ const App: React.FC = () => {
   };
 
   return (
-    <Switch>
-      <Route path="/settings">
-        <TimeConfigs sharedProps={sharedProps} setConfigsProps={setConfigsProps} />
-      </Route>
-      <Route path="/">
-        <Countdown sharedProps={sharedProps} />
-      </Route>
-    </Switch>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Switch
+          onChange={toggleTheme}
+          checked={theme.title === 'dark'}
+          checkedIcon={false}
+          uncheckedIcon={false}
+          height={10}
+          width={40}
+          handleDiameter={20}
+          offColor={shade(0.15, theme.colors.primary)}
+          onColor={theme.colors.secundary}
+        />
+        <GlobalStyle />
+        <SwitchRouter>
+          <Route path="/settings">
+            <TimeConfigs
+              sharedProps={sharedProps}
+              setConfigsProps={setConfigsProps}
+            />
+          </Route>
+
+          <Route path="/">
+            <Countdown sharedProps={sharedProps} />
+          </Route>
+        </SwitchRouter>
+      </div>
+    </ThemeProvider>
   );
 };
 
