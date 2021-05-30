@@ -26,7 +26,7 @@ import usePrevious from '../../helper/usePrevious';
 import Presets from '../../components/Presets';
 import SetCountdown from '../../components/SetCountdown';
 
-import { Section, DivConfig } from '../../styles/styles';
+import { Section, DivConfig } from './styles';
 
 const CountDown = (propsCountDown: PropsTypes) => {
   const { presets } = propsCountDown;

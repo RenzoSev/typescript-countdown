@@ -1,33 +1,50 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-shadow */
 
 import React, { ChangeEvent, useState } from 'react';
 
 import TimeConfigsTypes from './types';
 
-import Section from './styles';
+import { Section, DivPresets } from './styles';
+import { convertNumbersToCountdown } from '../../utils/convertTime';
 
 export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
   const { presets, setPresets } = propsConfigs;
 
-  const [newPresets, setNewPresets] = useState(presets);
+  const [localPresets, setLocalPresets] = useState(presets);
 
-  const sendNewPreset = (e: ChangeEvent<HTMLSelectElement>, index: number) => {
+  const changeMinutes = (preset: string[], value: string) => {
+    preset.shift();
+    preset.unshift(value);
+  };
+  const changeSeconds = (preset: string[], value: string) => {
+    preset.pop();
+    preset.push(value);
+  };
+  const sendNewPreset = (e: ChangeEvent<HTMLSelectElement>, index: number, time: string) => {
     const { value } = e.target;
+    const preset = localPresets[index].split(':');
 
-    console.log(value);
+    const timeIndex: {[key: string]: (preset: string[], value: string) => void} = {
+      minutes: changeMinutes,
+      seconds: changeSeconds,
+    };
 
-    // const splicedPresets = [...presets];
-    // splicedPresets.splice(index, 1, value);
+    timeIndex[time](preset, value);
+    const convertedPreset = convertNumbersToCountdown(preset);
 
-    // setNewPresets(splicedPresets);
+    const splicedPresets = [...localPresets];
+    splicedPresets.splice(index, 1, convertedPreset);
+
+    setLocalPresets(splicedPresets);
   };
 
-  const renderSelect = (index: number) => {
+  const renderSelect = (index: number, time: string) => {
     const arrayFrom59 = Array.from(Array(60).keys());
     const optionsValue = arrayFrom59.map((num) => (`0${num}`).slice(-2));
 
     return (
-      <select onChange={(e) => sendNewPreset(e, index)}>
+      <select onChange={(e) => sendNewPreset(e, index, time)}>
         {optionsValue.map((num) => (
           <option key={num}>
             {num}
@@ -42,19 +59,17 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
 
     return (
       presets.map((preset, index) => (
-        <div key={preset}>
+        <DivPresets key={preset}>
           <div>
-            <div>
-              <p>Minutes</p>
-              {renderSelect(index)}
-            </div>
-
-            <div>
-              <p>Seconds</p>
-              {renderSelect(index)}
-            </div>
+            <p>Minutes</p>
+            {renderSelect(index, 'minutes')}
           </div>
-        </div>
+
+          <div>
+            <p>Seconds</p>
+            {renderSelect(index, 'seconds')}
+          </div>
+        </DivPresets>
       )));
   };
 

@@ -1,22 +1,16 @@
 import styled from 'styled-components';
 
-const Section = styled.section`
+export const Section = styled.section`
     width: 100%;
     height: 100vh;
 
-    div {
-        div {
-            div {
-                display: flex;
-                gap: 0.5rem;
-
-                div {
-                    display: flex;
-                    flex-flow: column nowrap;
-                }
-            }
-        }
+    & > div {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
     }
 `;
 
-export default Section;
+export const DivPresets = styled.div`
+    display: flex;
+`;
