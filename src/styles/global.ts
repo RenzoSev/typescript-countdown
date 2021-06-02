@@ -22,6 +22,10 @@ export default createGlobalStyle`
         
         cursor: pointer;
         transition: all 0.3s;
+
+        &:hover {
+            background: ${(props) => props.theme.colors.secundary};
+        }
     }
 
     a {
