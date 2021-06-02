@@ -17,14 +17,16 @@ const Section = styled.section`
         border: none;
         border-radius: 5px;
 
-        font-size: 1.2rem;
+        font-size: 1.5rem;
 
-        padding: 0.8rem;
+        padding: 1rem;
     }
 
     span {
         font-weight: 600;
-        font-size: 6rem;
+        font-size: 7rem;
+
+        transition: all 0.3s;
     }
 `;
 

@@ -20,7 +20,7 @@ const Section = styled.section`
         border: none;
         outline: none;
 
-        font-size: 1.3rem;
+        font-size: 1.25rem;
 
         opacity: 48%;
 

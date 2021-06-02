@@ -10,13 +10,13 @@ const DivPresets = styled.div`
     & > button {
         flex-basis: 40%;
 
-        font-size: 0.9rem;
+        font-size: 1.2rem;
 
         border: none;
         border-radius: 5px;
 
         margin: 0.4rem;
-        padding: 0.6rem;
+        padding: 0.8rem;
     }
 `;
 
