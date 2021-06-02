@@ -48,7 +48,6 @@ export const Section = styled.section`
     }
 
     button {
-        background: ${(props) => props.theme.colors.primary};
         border-radius: 5px;
 
         font-size: 1.1rem;

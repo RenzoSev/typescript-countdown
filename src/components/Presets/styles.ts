@@ -11,9 +11,6 @@ const DivPresets = styled.div`
         flex-basis: 40%;
 
         font-size: 0.9rem;
-        color: ${(props) => props.theme.colors.text};
-
-        background: ${(props) => props.theme.colors.primary};
 
         border: none;
         border-radius: 5px;

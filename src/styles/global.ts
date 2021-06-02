@@ -15,7 +15,7 @@ export default createGlobalStyle`
     }
 
     button {
-        background: transparent;
+        background: ${(props) => props.theme.colors.primary};
         border:  none;
 
         color: ${(props) => props.theme.colors.text};

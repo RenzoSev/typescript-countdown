@@ -14,13 +14,10 @@ const Section = styled.section`
     font-family: 'Montserrat', sans-serif;
 
     & > button {
-        background: ${(props) => props.theme.colors.primary};
-        
         border: none;
         border-radius: 5px;
 
         font-size: 1.2rem;
-        color: ${(props) => props.theme.colors.text};
 
         padding: 0.8rem;
     }
