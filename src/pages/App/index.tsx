@@ -36,7 +36,9 @@ const App: React.FC = () => {
   };
   const setConfigsProps = {
     setPresets,
+    startMsg,
     setStartMsg,
+    endMsg,
     setEndMsg,
   };
 
@@ -62,6 +64,7 @@ const App: React.FC = () => {
             <TimeConfigs
               sharedProps={sharedProps}
               setConfigsProps={setConfigsProps}
+              theme={theme}
             />
           </Route>
           <Route path="/">

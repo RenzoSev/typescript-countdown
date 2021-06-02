@@ -13,17 +13,26 @@ import { RiArrowGoBackLine } from 'react-icons/ri';
 
 import { convertNumbersToCountdown, convertCountdownToNumbers } from '../../utils/convertTime';
 
-import TimeConfigsTypes from './types';
+import { TimeConfigsTypes, renderInputMsgTypes } from './types';
 
 import { Section, DivPresets, DivInputs } from './styles';
 import DivChangePage from '../../styles/styles';
 
 export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
-  const { sharedProps, setConfigsProps } = propsConfigs;
-  const { setPresets, setStartMsg, setEndMsg } = setConfigsProps;
+  const { sharedProps, setConfigsProps, theme } = propsConfigs;
+  const {
+    setPresets,
+    setStartMsg,
+    setEndMsg,
+    startMsg,
+    endMsg,
+  } = setConfigsProps;
   const { presets } = sharedProps;
 
   const [localPresets, setLocalPresets] = useState(presets);
+
+  const [valueStart, setValueStart] = useState('');
+  const [valueEnd, setValueEnd] = useState('');
 
   const changeMinutes = (preset: string[], value: string) => {
     preset.shift();
@@ -94,14 +103,47 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
       )));
   };
 
-  const renderInputMsg = (text: string, setMsg: Dispatch<SetStateAction<string>>) => (
-    <DivInputs>
-      <input
-        onChange={(e) => setMsg(e.target.value)}
-        placeholder={text}
-      />
-    </DivInputs>
-  );
+  const renderInputMsg = (inputProps: renderInputMsgTypes) => {
+    const {
+      msg,
+      placeholder,
+      setStateApp,
+      setStateConfig,
+    } = inputProps;
+
+    const borderStyle = msg
+      ? `1px solid ${theme.colors.primary}`
+      : `1px solid ${theme.colors.text}`;
+
+    return (
+      <DivInputs>
+        <input
+          onChange={(e) => {
+            setStateConfig(e.target.value);
+            setStateApp(e.target.value);
+          }}
+          placeholder={placeholder}
+          value={msg}
+          style={{ borderBottom: borderStyle }}
+        />
+      </DivInputs>
+    );
+  };
+
+  const inputsText = {
+    start: {
+      msg: valueStart,
+      placeholder: startMsg,
+      setStateApp: setStartMsg,
+      setStateConfig: setValueStart,
+    },
+    end: {
+      msg: valueEnd,
+      placeholder: endMsg,
+      setStateApp: setEndMsg,
+      setStateConfig: setValueEnd,
+    },
+  };
 
   return (
     <Section>
@@ -122,9 +164,9 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
             Save
           </button>
 
-          {renderInputMsg('Start Button', setStartMsg)}
+          {renderInputMsg(inputsText.start)}
 
-          {renderInputMsg('Stop Button', setEndMsg)}
+          {renderInputMsg(inputsText.end)}
         </div>
       </main>
     </Section>

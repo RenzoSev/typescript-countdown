@@ -15,6 +15,7 @@ export const Section = styled.section`
       border: 1px solid #0000001f;
       border-radius: 2px;
       background: ${(props) => props.theme.colors.background};
+      outline: none;
 
       color: ${(props) => props.theme.colors.text};
       font-size: 1.5rem;
@@ -80,18 +81,23 @@ export const DivInputs = styled.div`
   input {
     background: transparent;
     border: none;
-    border-bottom: 1px solid ${(props) => props.theme.colors.text};
     outline: none;
     
     width: 100%;
+    
     font-size: 1.2rem;
+    color: ${(props) => props.theme.colors.text};
 
     padding: 0.4rem;
 
     transition: all 0.3s;
 
     &:focus {
-      border-bottom: 1px solid ${(props) => props.theme.colors.primary};
+      border-bottom: 1px solid ${(props) => props.theme.colors.primary} !important;
+    }
+
+    &::placeholder {
+      opacity: 45%;
     }
   }
 `;

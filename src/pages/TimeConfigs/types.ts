@@ -3,13 +3,32 @@ import sharedPropsTypes from '../../types';
 
 type setConfigsProps = {
     setPresets: Dispatch<SetStateAction<string[]>>;
+    startMsg: string;
     setStartMsg: Dispatch<SetStateAction<string>>;
     setEndMsg: Dispatch<SetStateAction<string>>;
+    endMsg: string;
 }
 
-interface TimeConfigsTypes extends sharedPropsTypes {
+export interface TimeConfigsTypes extends sharedPropsTypes {
     setConfigsProps: setConfigsProps;
+    theme: {
+        title: string,
 
+        colors: {
+            primary: string;
+            secundary: string;
+            primaryTransparent: string,
+
+            background: string;
+            backgroundConfigs: string;
+            text: string;
+        },
+    }
 }
 
-export default TimeConfigsTypes;
+export type renderInputMsgTypes = {
+    msg: string,
+    placeholder: string,
+    setStateApp: Dispatch<SetStateAction<string>>,
+    setStateConfig: Dispatch<SetStateAction<string>>,
+}
