@@ -12,8 +12,10 @@ const DivPresets = styled.div`
 
         font-size: 0.9rem;
 
-        border: 1px solid ${(props) => props.theme.colors.primary};
-        border-radius: 8px;
+        background: ${(props) => props.theme.colors.primary};
+
+        border: none;
+        border-radius: 5px;
 
         margin: 0.4rem;
         padding: 0.6rem;

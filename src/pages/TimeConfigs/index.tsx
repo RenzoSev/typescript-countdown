@@ -11,11 +11,11 @@ import React, {
 import { Link } from 'react-router-dom';
 import { RiArrowGoBackLine } from 'react-icons/ri';
 
-import { convertNumbersToCountdown } from '../../utils/convertTime';
+import { convertNumbersToCountdown, convertCountdownToNumbers } from '../../utils/convertTime';
 
 import TimeConfigsTypes from './types';
 
-import { Section, DivPresets } from './styles';
+import { Section, DivPresets, DivInputs } from './styles';
 import DivChangePage from '../../styles/styles';
 
 export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
@@ -55,8 +55,17 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
     const arrayFrom59 = Array.from(Array(60).keys());
     const optionsValue = arrayFrom59.map((num) => (`0${num}`).slice(-2));
 
+    const timeConverted = convertCountdownToNumbers(presets[index]);
+    const timeConvertedObj: {[key: string]: string} = {
+      minutes: timeConverted[0] + timeConverted[1],
+      seconds: timeConverted[2] + timeConverted[3],
+    };
+
     return (
-      <select onChange={(e) => sendNewPreset(e, index, time)}>
+      <select
+        onChange={(e) => sendNewPreset(e, index, time)}
+        defaultValue={timeConvertedObj[time]}
+      >
         {optionsValue.map((num) => (
           <option key={num}>
             {num}
@@ -73,12 +82,12 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
       presets.map((preset, index) => (
         <DivPresets key={preset}>
           <div>
-            <p>Minutes</p>
             {renderSelect(index, 'minutes')}
           </div>
 
+          <span>:</span>
+
           <div>
-            <p>Seconds</p>
             {renderSelect(index, 'seconds')}
           </div>
         </DivPresets>
@@ -86,12 +95,12 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
   };
 
   const renderInputMsg = (text: string, setMsg: Dispatch<SetStateAction<string>>) => (
-    <div>
-      <p>{text}</p>
+    <DivInputs>
       <input
         onChange={(e) => setMsg(e.target.value)}
+        placeholder={text}
       />
-    </div>
+    </DivInputs>
   );
 
   return (
@@ -102,20 +111,22 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
         </Link>
       </DivChangePage>
 
-      <div>
-        {renderPresets()}
+      <main>
+        <div>
+          {renderPresets()}
 
-        <button
-          type="button"
-          onClick={() => setPresets(localPresets)}
-        >
-          Save
-        </button>
+          <button
+            type="button"
+            onClick={() => setPresets(localPresets)}
+          >
+            Save
+          </button>
 
-        {renderInputMsg('Button Start', setStartMsg)}
+          {renderInputMsg('Start Button', setStartMsg)}
 
-        {renderInputMsg('Button Stop', setEndMsg)}
-      </div>
+          {renderInputMsg('Stop Button', setEndMsg)}
+        </div>
+      </main>
     </Section>
   );
 }

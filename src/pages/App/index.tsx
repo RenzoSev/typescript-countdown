@@ -69,6 +69,15 @@ const App: React.FC = () => {
           </Route>
         </SwitchRouter>
       </div>
+      {/* <iframe
+        src="https://open.spotify.com/embed/playlist/1Wrdiaevs2RYscuXxtiBWT"
+        title="Spotify"
+        width="300"
+        height="380"
+        frameBorder="0"
+        allowTransparency
+        allow="encrypted-media"
+      /> */}
     </ThemeProvider>
   );
 };

@@ -5,7 +5,7 @@ const Section = styled.section`
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    gap: 2.5rem;
+    gap: 3.8rem;
 
     height: 100vh;
     
@@ -14,8 +14,10 @@ const Section = styled.section`
     font-family: 'Montserrat', sans-serif;
 
     & > button {
-        border: 1px solid ${(props) => props.theme.colors.primary};
-        border-radius: 8px;
+        background: ${(props) => props.theme.colors.primary};
+        
+        border: none;
+        border-radius: 5px;
 
         font-size: 1.2rem;
 
