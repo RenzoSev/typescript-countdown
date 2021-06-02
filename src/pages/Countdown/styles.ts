@@ -20,6 +20,7 @@ const Section = styled.section`
         border-radius: 5px;
 
         font-size: 1.2rem;
+        color: ${(props) => props.theme.colors.text};
 
         padding: 0.8rem;
     }
