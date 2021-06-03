@@ -19,7 +19,13 @@ import { Section, DivPresets, DivInputs } from './styles';
 import DivChangePage from '../../styles/styles';
 
 export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
-  const { sharedProps, setConfigsProps, theme } = propsConfigs;
+  const {
+    sharedProps,
+    setConfigsProps,
+    theme,
+    setTrybengers,
+    trybengers,
+  } = propsConfigs;
   const {
     setPresets,
     setStartMsg,
@@ -167,6 +173,13 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
           {renderInputMsg(inputsText.start)}
 
           {renderInputMsg(inputsText.end)}
+
+          <button
+            type="button"
+            onClick={() => setTrybengers(!trybengers)}
+          >
+            {trybengers ? 'Trybengers ON' : 'Trybengers OF'}
+          </button>
         </div>
       </main>
     </Section>

@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 import React, { useEffect, useState } from 'react';
 import { Route, Switch as SwitchRouter } from 'react-router-dom';
 
@@ -28,6 +27,8 @@ const App: React.FC = () => {
   const toggleTheme = () => {
     setTheme(theme.title === 'light' ? dark : light);
   };
+
+  const [trybengers, setTrybengers] = usePersistedState('trybengers', false);
 
   const sharedProps = {
     presets,
@@ -65,10 +66,15 @@ const App: React.FC = () => {
               sharedProps={sharedProps}
               setConfigsProps={setConfigsProps}
               theme={theme}
+              setTrybengers={setTrybengers}
+              trybengers={trybengers}
             />
           </Route>
           <Route path="/">
-            <Countdown sharedProps={sharedProps} />
+            <Countdown
+              sharedProps={sharedProps}
+              trybengers={trybengers}
+            />
           </Route>
         </SwitchRouter>
       </div>

@@ -7,6 +7,12 @@ import {
   CountdownTimeDeltaFormatted,
 } from 'react-countdown';
 
+import sharedPropsTypes from '../../types';
+
+export interface propsCountDownTypes extends sharedPropsTypes {
+  trybengers: boolean;
+}
+
 export type CountdownTypes = {
     completed: boolean;
     formatted: CountdownTimeDeltaFormatted;

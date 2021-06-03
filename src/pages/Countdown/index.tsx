@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
@@ -16,10 +15,10 @@ import fixTimeToDisplay from '../../utils/changeTimeToDisplay';
 
 import {
   CountdownTypes,
+  propsCountDownTypes,
   setTimeInfoTypes,
   timeTypes,
 } from './types';
-import sharedPropsTypes from '../../types';
 
 import { getStorage, setStorage } from '../../helper/localStorage';
 import usePrevious from '../../helper/usePrevious';
@@ -27,11 +26,15 @@ import usePrevious from '../../helper/usePrevious';
 import Presets from '../../components/Presets';
 import SetCountdown from '../../components/SetCountdown';
 
+import trybenger1 from '../../assets/trybengers/trybenger1.jpg';
+import trybenger2 from '../../assets/trybengers/trybenger2.png';
+import trybenger3 from '../../assets/trybengers/trybenger3.jpeg';
+
 import Section from './styles';
 import DivChangePage from '../../styles/styles';
 
-const CountDown = (propsCountDown: sharedPropsTypes) => {
-  const { sharedProps } = propsCountDown;
+const CountDown = (propsCountDown: propsCountDownTypes) => {
+  const { sharedProps, trybengers } = propsCountDown;
   const { startMsg, endMsg, presets } = sharedProps;
 
   const [playCountdown, setPlayCount] = useState(false);
@@ -130,7 +133,9 @@ const CountDown = (propsCountDown: sharedPropsTypes) => {
       seconds: convertSecToMili(seconds),
     };
 
-    return filteredTime.minutes + filteredTime.seconds;
+    const timeResult = filteredTime.minutes + filteredTime.seconds;
+
+    return timeResult;
   };
 
   const Completionist = () => <span>VQV!</span>;
@@ -159,6 +164,8 @@ const CountDown = (propsCountDown: sharedPropsTypes) => {
   };
 
   const checkWhatWillBeRender = () => {
+    const timeResult = Date.now() + getCountdownTime();
+
     if (!playCountdown) {
       return (
         <SetCountdown
@@ -169,7 +176,7 @@ const CountDown = (propsCountDown: sharedPropsTypes) => {
     }
     return (
       <Countdown
-        date={Date.now() + getCountdownTime()}
+        date={timeResult}
         renderer={renderer}
         autoStart={playCountdown}
         controlled={false}
@@ -192,6 +199,18 @@ const CountDown = (propsCountDown: sharedPropsTypes) => {
     setUnitSeconds(timeCountdown.unitSec);
   };
 
+  const getRandomImg = () => {
+    const imagesUrl = [trybenger1, trybenger2, trybenger3];
+    const randomNum = Math.floor(Math.random() * imagesUrl.length);
+    return imagesUrl[randomNum];
+  };
+
+  const stylesImage = {
+    backgroundImage: `url(${getRandomImg()})`,
+    backgroundSize: 'contain',
+    backgroundPosition: 'center',
+  };
+
   useEffect(() => {
     const countdownStorage = getStorage('countdown');
     if (countdownStorage) setLocalStorageToState(countdownStorage);
@@ -210,7 +229,7 @@ const CountDown = (propsCountDown: sharedPropsTypes) => {
         </Link>
       </DivChangePage>
 
-      <Section>
+      <Section style={trybengers ? stylesImage : {}}>
         {checkWhatWillBeRender()}
         <button
           type="button"

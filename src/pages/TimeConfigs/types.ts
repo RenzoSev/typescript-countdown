@@ -11,6 +11,8 @@ type setConfigsProps = {
 
 export interface TimeConfigsTypes extends sharedPropsTypes {
     setConfigsProps: setConfigsProps;
+    setTrybengers: Dispatch<SetStateAction<boolean>>;
+    trybengers: boolean;
     theme: {
         title: string,
 

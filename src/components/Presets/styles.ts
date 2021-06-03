@@ -17,6 +17,12 @@ const DivPresets = styled.div`
 
         margin: 0.4rem;
         padding: 0.8rem;
+
+        &:disabled {
+            opacity: 40%;
+        }
+
+        transition: all 0.5s;
     }
 `;
 
