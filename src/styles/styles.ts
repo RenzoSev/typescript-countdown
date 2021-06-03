@@ -3,11 +3,12 @@ import styled from 'styled-components';
 const DivChangePage = styled.div`
     position: absolute;
     left: 0;
+    z-index: 1;
     
     font-size: 1.3rem;
     color: ${(props) => props.theme.colors.primary};
     
-    padding: 0.6rem;
+    padding: 0.8rem;
 
     transition: all 0.3s;
 

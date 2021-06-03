@@ -216,7 +216,7 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
 
   const defaultOptions = {
     loop: true,
-    autoplay: true,
+    autoplay: playCountdown,
     animationData,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
@@ -246,17 +246,20 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
           options={defaultOptions}
           height={250}
           width={250}
+          isPaused={!playCountdown}
         />
       </DivLottie>
 
       <Section style={trybengers ? stylesImage : {}}>
         {checkWhatWillBeRender()}
+
         <button
           type="button"
           onClick={() => getPlayCount()}
         >
           {playCountdown ? endMsg : startMsg}
         </button>
+
         <Presets
           presets={presets}
           setLocalStorage={setLocalStorageToState}

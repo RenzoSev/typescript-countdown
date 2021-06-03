@@ -8,7 +8,7 @@ export const Section = styled.section`
     gap: 3.8rem;
 
     height: 100vh;
-    padding-top: 6rem;
+    padding-top: 6.3rem;
     
     color: ${(props) => props.theme.colors.primary};
     font-size: 3rem;
@@ -20,6 +20,7 @@ export const Section = styled.section`
 
         font-size: 1.5rem;
 
+        width: 44%;
         padding: 1rem;
     }
 
@@ -36,5 +37,5 @@ export const DivLottie = styled.div`
     margin: 0 auto;
     left: 0;
     right: 0;
-    z-index: -1;
+    z-index: 0;
 `;
