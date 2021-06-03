@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Countdown from 'react-countdown';
 import { GoGear } from 'react-icons/go';
+import Lottie from 'react-lottie';
 
 import {
   convertCountdownToNumbers,
@@ -30,7 +31,9 @@ import trybenger1 from '../../assets/trybengers/trybenger1.jpg';
 import trybenger2 from '../../assets/trybengers/trybenger2.png';
 import trybenger3 from '../../assets/trybengers/trybenger3.jpeg';
 
-import Section from './styles';
+import animationData from '../../lotties/coffee-time.json';
+
+import { Section, DivLottie } from './styles';
 import DivChangePage from '../../styles/styles';
 
 const CountDown = (propsCountDown: propsCountDownTypes) => {
@@ -211,6 +214,15 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
     backgroundPosition: 'center',
   };
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
   useEffect(() => {
     const countdownStorage = getStorage('countdown');
     if (countdownStorage) setLocalStorageToState(countdownStorage);
@@ -228,6 +240,14 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
           <GoGear />
         </Link>
       </DivChangePage>
+
+      <DivLottie>
+        <Lottie
+          options={defaultOptions}
+          height={250}
+          width={250}
+        />
+      </DivLottie>
 
       <Section style={trybengers ? stylesImage : {}}>
         {checkWhatWillBeRender()}

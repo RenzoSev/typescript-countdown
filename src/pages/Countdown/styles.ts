@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Section = styled.section`
+export const Section = styled.section`
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -8,6 +8,7 @@ const Section = styled.section`
     gap: 3.8rem;
 
     height: 100vh;
+    padding-top: 6rem;
     
     color: ${(props) => props.theme.colors.primary};
     font-size: 3rem;
@@ -30,4 +31,10 @@ const Section = styled.section`
     }
 `;
 
-export default Section;
+export const DivLottie = styled.div`
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    z-index: -1;
+`;
