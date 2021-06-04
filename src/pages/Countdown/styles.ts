@@ -20,7 +20,7 @@ export const Section = styled.section`
 
         font-size: 1.5rem;
 
-        width: 44%;
+        width: 45%;
         padding: 1rem;
     }
 
@@ -38,4 +38,12 @@ export const DivLottie = styled.div`
     left: 0;
     right: 0;
     z-index: 0;
+`;
+
+export const DivSpotify = styled.div`
+    position: absolute;
+    bottom: 7px;
+    z-index: 0;
+
+    font-size: 1.5rem;
 `;

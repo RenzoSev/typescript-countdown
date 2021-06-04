@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Countdown from 'react-countdown';
 import { GoGear } from 'react-icons/go';
+import { FaSpotify } from 'react-icons/fa';
 import Lottie from 'react-lottie';
 
 import {
@@ -33,7 +34,7 @@ import trybenger3 from '../../assets/trybengers/trybenger3.jpeg';
 
 import animationData from '../../lotties/coffee-time.json';
 
-import { Section, DivLottie } from './styles';
+import { Section, DivLottie, DivSpotify } from './styles';
 import DivChangePage from '../../styles/styles';
 
 const CountDown = (propsCountDown: propsCountDownTypes) => {
@@ -265,6 +266,10 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
           setLocalStorage={setLocalStorageToState}
           playCountdown={playCountdown}
         />
+
+        <DivSpotify>
+          <FaSpotify />
+        </DivSpotify>
       </Section>
     </>
   );
