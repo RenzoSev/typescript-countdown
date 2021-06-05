@@ -21,6 +21,12 @@ const DivChangePage = styled.div`
             font-size: 1.7rem;
         }
     }
+    
+    @media(max-height: 660px) {
+        & {
+            font-size: 1.9rem;
+        }
+    }
 `;
 
 export default DivChangePage;

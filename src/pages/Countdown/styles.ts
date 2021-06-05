@@ -19,7 +19,7 @@ export const Section = styled.section`
         border-radius: 5px;
         box-shadow: var(--shadow);
 
-        font-size: 1.5rem;
+        font-size: 1.4rem;
 
         width: 45%;
         padding: 1rem;
@@ -35,7 +35,15 @@ export const Section = styled.section`
     @media(min-width: 768px) {
         & {
             gap: 3rem;
-            padding-top: 6rem;
+            padding-top: 5.5rem;
+
+            span {
+                font-size: 8.5rem; 
+            }
+
+            & > main {
+                margin-bottom: 2rem;
+            }
         }
 
         & > button {
@@ -47,13 +55,20 @@ export const Section = styled.section`
 export const DivLottie = styled.div`
     position: absolute;
     margin: 0 auto;
+    top: -2rem;
     left: 0;
     right: 0;
     z-index: 0;
 
     @media(min-width: 768px) {
         & {
-            top: -78px;
+            top: -5.5rem;
+        }
+    }
+    
+    @media (max-height: 660px) {
+        & {
+            top: -4rem;
         }
     }
 `;

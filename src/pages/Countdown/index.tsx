@@ -37,6 +37,7 @@ import animationData from '../../lotties/coffee-time.json';
 
 import { Section, DivLottie, DivSpotify } from './styles';
 import DivChangePage from '../../styles/styles';
+import getLottieDevice from '../../utils/checkDisplayDevice';
 
 const CountDown = (propsCountDown: propsCountDownTypes) => {
   const { sharedProps, trybengers } = propsCountDown;
@@ -235,11 +236,26 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
     if (oldState) setStorage('countdown', timer);
   });
 
-  const isMin768 = useMediaQuery({
-    query: '(min-device-width: 768px)',
-  });
+  // const getLottieDevice = () => {
+  //   const isMaxH568 = useMediaQuery({
+  //     query: '(max-device-height: 568px)',
+  //   });
+  //   const lottieHeight568 = 190;
 
-  const lottieDevice = isMin768 ? 400 : 250;
+  //   const isMaxH850 = useMediaQuery({
+  //     query: '(max-device-height: 850px)',
+  //   });
+  //   const lottieHeight850 = 350;
+
+  //   const isMinW768 = useMediaQuery({
+  //     query: '(min-device-width: 768px)',
+  //   });
+  //   const lottieWidth = isMinW768 ? 400 : 270;
+
+  //   return isMaxH568 ? lottieHeight568 : lottieWidth;
+  // };
+
+  const lottieDevice = getLottieDevice();
 
   return (
     <>
@@ -259,7 +275,9 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
       </DivLottie>
 
       <Section style={trybengers ? stylesImage : {}}>
-        {checkWhatWillBeRender()}
+        <main>
+          {checkWhatWillBeRender()}
+        </main>
 
         <button
           type="button"

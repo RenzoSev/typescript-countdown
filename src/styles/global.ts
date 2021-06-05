@@ -40,7 +40,20 @@ export default createGlobalStyle`
 
     @media(min-width: 768px) {
         html {
-            font-size: 18px;
+            font-size: 90%;
+        }
+    }
+
+
+    @media(max-height: 735px) {
+        html {
+            font-size: 85%;
+        }
+    }
+
+    @media(max-height: 660px) {
+        html {
+            font-size: 70%;
         }
     }
 `;
