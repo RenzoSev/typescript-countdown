@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import Countdown from 'react-countdown';
 import { GoGear } from 'react-icons/go';
 import { FaSpotify } from 'react-icons/fa';
@@ -234,6 +235,12 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
     if (oldState) setStorage('countdown', timer);
   });
 
+  const isMin768 = useMediaQuery({
+    query: '(min-device-width: 768px)',
+  });
+
+  const lottieDevice = isMin768 ? 400 : 250;
+
   return (
     <>
       <DivChangePage>
@@ -245,8 +252,8 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
       <DivLottie>
         <Lottie
           options={defaultOptions}
-          height={250}
-          width={250}
+          height={lottieDevice}
+          width={lottieDevice}
           isPaused={!playCountdown}
         />
       </DivLottie>

@@ -25,6 +25,17 @@ const DivPresets = styled.div`
 
         transition: all 0.5s;
     }
+
+
+    @media(min-width: 768px) {
+        & {
+            width: 35%;
+        }
+        
+        & > button {
+            flex-basis: 35%;
+        }
+    }
 `;
 
 export default DivPresets;

@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Route, Switch as SwitchRouter } from 'react-router-dom';
 
-import { ThemeProvider, DefaultTheme, ThemeContext } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
 import Switch from 'react-switch';
 import { shade } from 'polished';
 
@@ -43,6 +44,15 @@ const App: React.FC = () => {
     setEndMsg,
   };
 
+  const isMin768 = useMediaQuery({
+    query: '(min-device-width: 768px)',
+  });
+
+  const switchDevice = {
+    heigth: isMin768 ? 15 : 10,
+    width: isMin768 ? 50 : 40,
+  };
+
   return (
     <ThemeProvider theme={theme}>
       {/* <div style={{ position: 'absolute', top: '0', left: '0' }}>
@@ -63,8 +73,8 @@ const App: React.FC = () => {
             checked={theme.title === 'dark'}
             checkedIcon={false}
             uncheckedIcon={false}
-            height={10}
-            width={40}
+            height={switchDevice.heigth}
+            width={switchDevice.width}
             handleDiameter={18}
             offColor={shade(0.15, theme.colors.primary)}
             onColor={theme.colors.secundary}

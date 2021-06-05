@@ -6,6 +6,10 @@ const DivSwitch = styled.div`
     z-index: 1;
 
     padding: 0.8rem;
+
+    & {
+        padding: 1rem;
+    }
 `;
 
 export default DivSwitch;

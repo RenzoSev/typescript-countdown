@@ -31,6 +31,16 @@ export const Section = styled.section`
 
         transition: all 0.3s;
     }
+
+    @media(min-width: 768px) {
+        & {
+            gap: 3rem;
+        }
+
+        & > button {
+            width: 29.8%;
+        }
+    }
 `;
 
 export const DivLottie = styled.div`
@@ -39,6 +49,12 @@ export const DivLottie = styled.div`
     left: 0;
     right: 0;
     z-index: 0;
+
+    @media(min-width: 768px) {
+        & {
+            top: -78px;
+        }
+    }
 `;
 
 export const DivSpotify = styled.div`

@@ -40,7 +40,7 @@ export default createGlobalStyle`
 
     @media(min-width: 768px) {
         html {
-            font-size: 20px;
+            font-size: 18px;
         }
     }
 `;
