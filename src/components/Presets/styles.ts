@@ -14,6 +14,7 @@ const DivPresets = styled.div`
 
         border: none;
         border-radius: 5px;
+        box-shadow: var(--shadow);
 
         margin: 0.4rem;
         padding: 0.8rem;

@@ -37,7 +37,8 @@ export const Section = styled.section`
       align-items: center;
       gap: 1.3rem;
 
-      border: 1px solid ${(props) => props.theme.colors.primaryTransparent};  
+      border: 1px solid ${(props) => props.theme.colors.primaryTransparent};
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 3%);
       border-radius: 5px;
 
       padding: 1.5rem;
@@ -50,6 +51,7 @@ export const Section = styled.section`
 
     button {
         border-radius: 5px;
+        box-shadow: var(--shadow);
 
         font-size: 1.1rem;
         padding: 0.6rem 3.9rem;

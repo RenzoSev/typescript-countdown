@@ -15,6 +15,12 @@ const DivChangePage = styled.div`
     &:hover {
         color: ${((props) => props.theme.colors.secundary)};
     }
+
+    @media(min-width: 768px) {
+        & {
+            font-size: 1.7rem;
+        }
+    }
 `;
 
 export default DivChangePage;

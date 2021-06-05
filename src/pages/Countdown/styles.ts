@@ -8,7 +8,7 @@ export const Section = styled.section`
     gap: 3.8rem;
 
     height: 100vh;
-    padding-top: 6.3rem;
+    padding-top: 5.5rem;
     
     color: ${(props) => props.theme.colors.primary};
     font-size: 3rem;
@@ -17,6 +17,7 @@ export const Section = styled.section`
     & > button {
         border: none;
         border-radius: 5px;
+        box-shadow: var(--shadow);
 
         font-size: 1.5rem;
 

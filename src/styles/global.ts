@@ -10,6 +10,10 @@ export default createGlobalStyle`
         font-family: 'Montserrat', sans-serif;
     }
 
+    :root {
+        --shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 18%);
+    }
+
     body {
         background: ${(props) => props.theme.colors.background};
     }
@@ -32,5 +36,11 @@ export default createGlobalStyle`
         color: inherit;
         
         text-decoration: none;
+    }
+
+    @media(min-width: 768px) {
+        html {
+            font-size: 20px;
+        }
     }
 `;
