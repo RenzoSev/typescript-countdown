@@ -102,4 +102,14 @@ export const DivInputs = styled.div`
       opacity: 45%;
     }
   }
+
+  @media(min-width: 768px) {
+        & {
+          width: 40%;
+        }
+        
+        & input {
+            width: 100%;
+        }
+    }
 `;

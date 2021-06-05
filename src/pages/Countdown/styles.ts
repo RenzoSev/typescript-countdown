@@ -35,6 +35,7 @@ export const Section = styled.section`
     @media(min-width: 768px) {
         & {
             gap: 3rem;
+            padding-top: 6rem;
         }
 
         & > button {
