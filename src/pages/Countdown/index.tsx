@@ -34,7 +34,7 @@ import trybenger3 from '../../assets/trybengers/trybenger3.jpeg';
 
 import animationData from '../../lotties/coffee-time.json';
 
-import { Section, DivLottie, DivSpotify } from './styles';
+import { Section, DivLottie, DivIframe } from './styles';
 import DivChangePage from '../../styles/styles';
 import getLottieDevice from '../../utils/checkDisplayDevice';
 import PlayerMusic from '../../components/PlayerMusic';
@@ -275,13 +275,15 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
           playCountdown={playCountdown}
         />
 
-        <DivSpotify>
-          <AiFillYoutube onClick={() => setActivePlayer(!isActivePlayer)} />
+        <DivIframe>
+          <button type="button">
+            <AiFillYoutube onClick={() => setActivePlayer(!isActivePlayer)} />
+          </button>
           <PlayerMusic
             isActive={isActivePlayer}
             playCountdown={playCountdown}
           />
-        </DivSpotify>
+        </DivIframe>
       </Section>
     </>
   );

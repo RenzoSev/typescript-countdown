@@ -73,10 +73,28 @@ export const DivLottie = styled.div`
     }
 `;
 
-export const DivSpotify = styled.div`
+export const DivIframe = styled.div`
+    display: flex;
+    flex-direction: column;
+    
     position: absolute;
     bottom: 7px;
     z-index: 0;
 
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+
+    button {  
+        background: transparent;
+        border: none;
+
+        cursor: pointer;
+        transition: all 0.3s;
+
+        font-size: 1.8rem;
+        color: ${((props) => props.theme.colors.primary)};
+
+        &:hover {
+        color: ${((props) => props.theme.colors.secundary)};
+        }
+    }
 `;

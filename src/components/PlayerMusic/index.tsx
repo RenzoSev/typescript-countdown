@@ -9,8 +9,8 @@ export default function PlayerMusic(playerProps: PlayerMusicTypes) {
   return (
     <Section isActive={isActive}>
       <iframe
-        width="560"
-        height="315"
+        width="280"
+        height="157.5"
         src={`https://www.youtube.com/embed/5qap5aO4i9A?autoplay=${playCountdown ? 1 : 0}`}
         title="YouTube video player"
         frameBorder="0"
