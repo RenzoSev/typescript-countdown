@@ -34,7 +34,7 @@ export default function PlayerMusic(playerProps: PlayerMusicTypes) {
         type="button"
         onClick={() => setUserLinkPlayer(inputLink)}
       >
-        Enviar
+        Play
       </button>
     </Section>
   );
