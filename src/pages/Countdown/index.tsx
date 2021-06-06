@@ -35,16 +35,19 @@ import trybenger3 from '../../assets/trybengers/trybenger3.jpeg';
 import animationData from '../../lotties/coffee-time.json';
 
 import { Section, DivLottie, DivIframe } from './styles';
-import DivChangePage from '../../styles/styles';
+import ButtonChangePage from '../../styles/styles';
 import getLottieDevice from '../../utils/checkDisplayDevice';
 import PlayerMusic from '../../components/PlayerMusic';
 
 const CountDown = (propsCountDown: propsCountDownTypes) => {
-  const { sharedProps, trybengers } = propsCountDown;
+  const { sharedProps, trybengers, setIsPlaying } = propsCountDown;
   const { startMsg, endMsg, presets } = sharedProps;
 
   const [playCountdown, setPlayCount] = useState(false);
-  const getPlayCount = () => setPlayCount(!playCountdown);
+  const getPlayCount = () => {
+    setIsPlaying(!playCountdown);
+    setPlayCount(!playCountdown);
+  };
 
   const [decMinutes, setDecMinutes] = useState(0);
   const [unitMinutes, setUnitMinutes] = useState(0);
@@ -242,11 +245,11 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
 
   return (
     <>
-      <DivChangePage>
-        <Link to="/settings">
+      <ButtonChangePage disabled={playCountdown}>
+        <Link to={`${playCountdown ? '/' : '/settings'}`}>
           <GoGear />
         </Link>
-      </DivChangePage>
+      </ButtonChangePage>
 
       <DivLottie>
         <Lottie
@@ -276,8 +279,12 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
         />
 
         <DivIframe>
-          <button type="button">
-            <AiFillYoutube onClick={() => setActivePlayer(!isActivePlayer)} />
+          <button
+            type="button"
+            disabled={playCountdown}
+            onClick={() => setActivePlayer(!isActivePlayer)}
+          >
+            <AiFillYoutube />
           </button>
           <PlayerMusic
             isActive={isActivePlayer}

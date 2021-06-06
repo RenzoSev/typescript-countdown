@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch as SwitchRouter } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
@@ -18,6 +18,8 @@ import dark from '../../styles/themes/dark';
 import GlobalStyle from '../../styles/global';
 
 const App: React.FC = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   const initalPresets = ['05:00', '08:00', '10:00', '15:00'];
   const [presets, setPresets] = usePersistedState('presetsStorage', initalPresets);
 
@@ -67,6 +69,7 @@ const App: React.FC = () => {
             handleDiameter={18}
             offColor={shade(0.15, theme.colors.primary)}
             onColor={theme.colors.secundary}
+            disabled={isPlaying}
           />
         </DivSwitch>
         <GlobalStyle />
@@ -84,6 +87,7 @@ const App: React.FC = () => {
             <Countdown
               sharedProps={sharedProps}
               trybengers={trybengers}
+              setIsPlaying={setIsPlaying}
             />
           </Route>
         </SwitchRouter>

@@ -11,6 +11,7 @@ import sharedPropsTypes from '../../types';
 
 export interface propsCountDownTypes extends sharedPropsTypes {
   trybengers: boolean;
+  setIsPlaying: Dispatch<SetStateAction<boolean>>
 }
 
 export type CountdownTypes = {

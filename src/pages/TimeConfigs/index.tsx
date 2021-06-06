@@ -16,7 +16,7 @@ import { convertNumbersToCountdown, convertCountdownToNumbers } from '../../util
 import { TimeConfigsTypes, renderInputMsgTypes } from './types';
 
 import { Section, DivPresets, DivInputs } from './styles';
-import DivChangePage from '../../styles/styles';
+import ButtonChangePage from '../../styles/styles';
 
 export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
   const {
@@ -153,11 +153,11 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
 
   return (
     <Section>
-      <DivChangePage>
+      <ButtonChangePage>
         <Link to="/">
           <RiArrowGoBackLine />
         </Link>
-      </DivChangePage>
+      </ButtonChangePage>
 
       <main>
         <div>

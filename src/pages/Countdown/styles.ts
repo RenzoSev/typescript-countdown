@@ -94,7 +94,15 @@ export const DivIframe = styled.div`
         color: ${((props) => props.theme.colors.primary)};
 
         &:hover {
-        color: ${((props) => props.theme.colors.secundary)};
+            color: ${((props) => props.theme.colors.secundary)};
+        }
+
+        &:disabled {
+            opacity: 40%;
+
+            &:hover {
+                color: inherit;
+            }
         }
     }
 `;

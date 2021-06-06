@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
-const DivChangePage = styled.div`
+const ButtonChangePage = styled.button`
+    background: transparent;
+    border: none;
+    
     position: absolute;
     left: 0;
     z-index: 1;
     
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     color: ${(props) => props.theme.colors.primary};
     
     padding: 0.8rem;
@@ -13,7 +16,16 @@ const DivChangePage = styled.div`
     transition: all 0.3s;
 
     &:hover {
+        background: inherit;
         color: ${((props) => props.theme.colors.secundary)};
+    }
+
+    &:disabled {
+        opacity: 40%;
+
+        &:hover {
+            color: ${(props) => props.theme.colors.primary};
+        }
     }
 
     @media(min-width: 768px) {
@@ -29,4 +41,4 @@ const DivChangePage = styled.div`
     }
 `;
 
-export default DivChangePage;
+export default ButtonChangePage;
