@@ -56,8 +56,7 @@ npm start
 ## Presentation
 ### 🖼️ Images 🖼️
 ![desktop](https://user-images.githubusercontent.com/73757018/120912935-c2fa9580-c669-11eb-91cc-8877f1019f31.png)
-![iphone4](https://user-images.githubusercontent.com/73757018/120912973-f2a99d80-c669-11eb-837e-aa1b0a3a885a.png)
-![iphone678](https://user-images.githubusercontent.com/73757018/120912960-df96cd80-c669-11eb-9f69-a3835c7b131c.png)
 ![iphonex](https://user-images.githubusercontent.com/73757018/120912961-e1f92780-c669-11eb-9e66-2017882c9851.png)
+![iphone678](https://user-images.githubusercontent.com/73757018/120912960-df96cd80-c669-11eb-9f69-a3835c7b131c.png)
 ### 🎥 Video 🎥
 https://user-images.githubusercontent.com/73757018/120912992-18cf3d80-c66a-11eb-9f1d-8d9305fd2e9b.mp4
