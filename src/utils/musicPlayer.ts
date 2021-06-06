@@ -1,4 +1,9 @@
-const filterLink = (link: string) => link.split('=')[1];
+const filterLink = (link: string) => {
+  const isWebLink = link.includes('watch?v=');
+  return isWebLink
+    ? link.split('watch?v=')[1]
+    : link.split('/')[3];
+};
 
 export const lofiLink = 'https://www.youtube.com/watch?v=5qap5aO4i9A';
 
