@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import sharedPropsTypes from '../../types';
 
 type setConfigsProps = {
@@ -34,3 +34,5 @@ export type renderInputMsgTypes = {
     setStateApp: Dispatch<SetStateAction<string>>,
     setStateConfig: Dispatch<SetStateAction<string>>,
 }
+
+export type changeEvent = ChangeEvent<HTMLSelectElement>;

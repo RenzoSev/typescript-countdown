@@ -1,19 +1,14 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
 
-import React, {
-  ChangeEvent,
-  useState,
-  Dispatch,
-  SetStateAction,
-} from 'react';
+import React, { ChangeEvent, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { RiArrowGoBackLine } from 'react-icons/ri';
 
 import { convertNumbersToCountdown, convertCountdownToNumbers } from '../../utils/convertTime';
 
-import { TimeConfigsTypes, renderInputMsgTypes } from './types';
+import { TimeConfigsTypes, renderInputMsgTypes, changeEvent } from './types';
 
 import { Section, DivPresets, DivInputs } from './styles';
 import ButtonChangePage from '../../styles/styles';
@@ -48,7 +43,8 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
     preset.pop();
     preset.push(value);
   };
-  const sendNewPreset = (e: ChangeEvent<HTMLSelectElement>, index: number, time: string) => {
+
+  const sendNewPreset = (e: changeEvent, index: number, time: string) => {
     const { value } = e.target;
     const preset = localPresets[index].split(':');
 
@@ -89,25 +85,20 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
       </select>
     );
   };
-  const renderPresets = () => {
-    const arrayFrom59 = Array.from(Array(60).keys());
-    const optionsValue = arrayFrom59.map((num) => (`0${num}`).slice(-2));
+  const renderPresets = () => (
+    presets.map((preset, index) => (
+      <DivPresets key={preset}>
+        <div>
+          {renderSelect(index, 'minutes')}
+        </div>
 
-    return (
-      presets.map((preset, index) => (
-        <DivPresets key={preset}>
-          <div>
-            {renderSelect(index, 'minutes')}
-          </div>
+        <span>:</span>
 
-          <span>:</span>
-
-          <div>
-            {renderSelect(index, 'seconds')}
-          </div>
-        </DivPresets>
-      )));
-  };
+        <div>
+          {renderSelect(index, 'seconds')}
+        </div>
+      </DivPresets>
+    )));
 
   const renderInputMsg = (inputProps: renderInputMsgTypes) => {
     const {

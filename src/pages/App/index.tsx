@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Route, Switch as SwitchRouter } from 'react-router-dom';
 
