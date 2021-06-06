@@ -11,7 +11,7 @@ Renzo Sevilha
 <a href="mailto:sevilharenzo@gmail.com"><img src="https://img.shields.io/badge/e‑mail-D14836.svg?style=for-the-badge&logo=GMail&logoColor=white"></a>
 
 ## 🤔 How to run the project
-### Download the project
+### 1. Download the project
 ```
 yarn add
 npm install
@@ -20,7 +20,7 @@ npm install
 yarn start
 npm start
 ```
-### Acces from Github Pages
+### 2. Acces from Github Pages
 [Link to Countdown](https://renzosev.github.io/typescript-countdown/)
 
 ## 💻 Technologies and tools
@@ -40,9 +40,7 @@ npm start
 1. 😎 Simple to use: __you just need to choose the time with the arrows__.
 1. 🤓 Smart Countdown: __the countdown will help you to set your wanted time__.
 1. 🌞🌝 Light and Dark mode available.
-1. 🧑‍🎨 Highly customizable countdown:
-    1. 4 time presets;
-    1. Text of start and end button.
+1. 🧑‍🎨 Highly customizable countdown
 1. 😮 Very responsive countdown: __available for all devices__.
 1. 🎵 Youtube Player: __choose your favorite music__.
 1. 💾 User interaction is saved on localStorage:
