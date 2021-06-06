@@ -2,10 +2,9 @@
 import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
 import Countdown from 'react-countdown';
 import { GoGear } from 'react-icons/go';
-import { FaSpotify } from 'react-icons/fa';
+import { AiFillYoutube } from 'react-icons/ai';
 import Lottie from 'react-lottie';
 
 import {
@@ -38,6 +37,7 @@ import animationData from '../../lotties/coffee-time.json';
 import { Section, DivLottie, DivSpotify } from './styles';
 import DivChangePage from '../../styles/styles';
 import getLottieDevice from '../../utils/checkDisplayDevice';
+import PlayerMusic from '../../components/PlayerMusic';
 
 const CountDown = (propsCountDown: propsCountDownTypes) => {
   const { sharedProps, trybengers } = propsCountDown;
@@ -50,6 +50,8 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
   const [unitMinutes, setUnitMinutes] = useState(0);
   const [decSeconds, setDecSeconds] = useState(0);
   const [unitSeconds, setUnitSeconds] = useState(0);
+
+  const [isActivePlayer, setActivePlayer] = useState(false);
 
   const states = {
     decMinutes,
@@ -236,25 +238,6 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
     if (oldState) setStorage('countdown', timer);
   });
 
-  // const getLottieDevice = () => {
-  //   const isMaxH568 = useMediaQuery({
-  //     query: '(max-device-height: 568px)',
-  //   });
-  //   const lottieHeight568 = 190;
-
-  //   const isMaxH850 = useMediaQuery({
-  //     query: '(max-device-height: 850px)',
-  //   });
-  //   const lottieHeight850 = 350;
-
-  //   const isMinW768 = useMediaQuery({
-  //     query: '(min-device-width: 768px)',
-  //   });
-  //   const lottieWidth = isMinW768 ? 400 : 270;
-
-  //   return isMaxH568 ? lottieHeight568 : lottieWidth;
-  // };
-
   const lottieDevice = getLottieDevice();
 
   return (
@@ -293,7 +276,11 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
         />
 
         <DivSpotify>
-          <FaSpotify />
+          <AiFillYoutube onClick={() => setActivePlayer(!isActivePlayer)} />
+          <PlayerMusic
+            isActive={isActivePlayer}
+            playCountdown={playCountdown}
+          />
         </DivSpotify>
       </Section>
     </>
