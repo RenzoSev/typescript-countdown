@@ -94,6 +94,7 @@ export const DivIframe = styled.div`
         color: ${((props) => props.theme.colors.primary)};
 
         &:hover {
+            background: transparent;
             color: ${((props) => props.theme.colors.secundary)};
         }
 
@@ -101,6 +102,7 @@ export const DivIframe = styled.div`
             opacity: 40%;
 
             &:hover {
+                background: transparent;
                 color: inherit;
             }
         }
