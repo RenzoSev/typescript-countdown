@@ -32,6 +32,7 @@ npm start
 
 ## Features
 1. 😎 Simple to use: __you just need to choose the time with the arrows__.
+1. 🤓 Smart Countdown: __the countdown will help you to set your wanted time__.
 1. 🌞🌝 Light and Dark mode available.
 1. 🧑‍🎨 Highly customizable countdown:
     1. 4 time presets;
@@ -43,7 +44,5 @@ npm start
     1. Dark/Light mode;
     1. Text buttons;
     1. Youtube Player Link.
+1. 🦸 Trybengers: __private mode to Trybers__.
 1. ☕ Awesome coffe animation during countdown.
-
-## Presentation
-
