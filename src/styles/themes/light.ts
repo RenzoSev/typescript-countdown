@@ -6,6 +6,7 @@ export default {
     primaryTransparent: '#4adede33',
     secundary: '#6cf3f3',
     background: '#f5f5f5',
+    backgroundRevert: '#222',
     backgroundConfigs: '#ffffff47',
     text: '#3d495c',
   },

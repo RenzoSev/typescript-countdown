@@ -11,6 +11,7 @@ declare module 'styled-components' {
 
             background: string;
             backgroundConfigs: string;
+            backgroundRevert: string;
             text: string;
         },
     }

@@ -1,4 +1,10 @@
+/* eslint-disable no-confusing-arrow */
+
 import styled from 'styled-components';
+
+interface DivInframeProps {
+    isActivePlayer: boolean;
+}
 
 export const Section = styled.section`
     display: flex;
@@ -73,7 +79,7 @@ export const DivLottie = styled.div`
     }
 `;
 
-export const DivIframe = styled.div`
+export const DivIframe = styled.div<DivInframeProps>`
     display: flex;
     flex-direction: column;
     
@@ -83,15 +89,15 @@ export const DivIframe = styled.div`
 
     font-size: 1.8rem;
 
-    button {  
+    & > button {  
         background: transparent;
         border: none;
 
         cursor: pointer;
         transition: all 0.3s;
 
-        font-size: 1.8rem;
-        color: ${((props) => props.theme.colors.primary)};
+        font-size: 2rem;
+        color: ${((props) => props.isActivePlayer ? '#FF0000' : props.theme.colors.primary)} !important;
 
         &:hover {
             background: transparent;

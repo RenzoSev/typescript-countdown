@@ -14,6 +14,7 @@ import {
   convertSecToMili,
 } from '../../utils/convertTime';
 import fixTimeToDisplay from '../../utils/changeTimeToDisplay';
+import { lofiLink } from '../../utils/musicPlayer';
 
 import {
   CountdownTypes,
@@ -38,6 +39,7 @@ import { Section, DivLottie, DivIframe } from './styles';
 import ButtonChangePage from '../../styles/styles';
 import getLottieDevice from '../../utils/checkDisplayDevice';
 import PlayerMusic from '../../components/PlayerMusic';
+import usePersistedState from '../../helper/usePersistedToState';
 
 const CountDown = (propsCountDown: propsCountDownTypes) => {
   const { sharedProps, trybengers, setIsPlaying } = propsCountDown;
@@ -55,6 +57,8 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
   const [unitSeconds, setUnitSeconds] = useState(0);
 
   const [isActivePlayer, setActivePlayer] = useState(false);
+
+  const [userLinkPlayer, setUserLinkPlayer] = usePersistedState('music', lofiLink);
 
   const states = {
     decMinutes,
@@ -278,7 +282,7 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
           playCountdown={playCountdown}
         />
 
-        <DivIframe>
+        <DivIframe isActivePlayer={isActivePlayer}>
           <button
             type="button"
             disabled={playCountdown}
@@ -289,6 +293,8 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
           <PlayerMusic
             isActive={isActivePlayer}
             playCountdown={playCountdown}
+            userLinkPlayer={userLinkPlayer}
+            setUserLinkPlayer={setUserLinkPlayer}
           />
         </DivIframe>
       </Section>
