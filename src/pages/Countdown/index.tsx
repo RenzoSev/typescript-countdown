@@ -37,7 +37,7 @@ import animationData from '../../lotties/coffee-time.json';
 
 import { Section, DivLottie, DivIframe } from './styles';
 import ButtonChangePage from '../../styles/styles';
-import getLottieDevice from '../../utils/checkDisplayDevice';
+import { getLottieDevice } from '../../utils/checkDisplayDevice';
 import PlayerMusic from '../../components/PlayerMusic';
 import usePersistedState from '../../helper/usePersistedToState';
 

@@ -6,7 +6,9 @@ const checkDisplay = (range: string, display: string, value: number) => (
   useMediaQuery({ query: `(${range}-device-${display}: ${value}px)` })
 );
 
-const getLottieDevice = () => {
+export const checkMobileOrDesktop = () => checkDisplay('min', 'width', 720);
+
+export const getLottieDevice = () => {
   const isSmallHeight = checkDisplay('max', 'height', 568);
   const isMediumHeight = checkDisplay('max', 'height', 850);
   const isLargeWidth = checkDisplay('min', 'width', 768);
@@ -17,5 +19,3 @@ const getLottieDevice = () => {
   if (isMediumHeight && isLargeWidth) return 340;
   return largeWidth;
 };
-
-export default getLottieDevice;

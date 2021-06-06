@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
+import { checkMobileOrDesktop } from '../../utils/checkDisplayDevice';
+import { getDefaultLink, getLink } from '../../utils/musicPlayer';
 import PlayerMusicTypes from './types';
 
 import Section from './styles';
-import { getLink } from '../../utils/musicPlayer';
 
 export default function PlayerMusic(playerProps: PlayerMusicTypes) {
   const {
@@ -11,7 +12,11 @@ export default function PlayerMusic(playerProps: PlayerMusicTypes) {
   } = playerProps;
 
   const [inputLink, setInputLink] = useState('');
-  const filteredLink = getLink(userLinkPlayer, playCountdown);
+
+  const isDesktop = checkMobileOrDesktop();
+  const filteredLink = isDesktop
+    ? getLink(userLinkPlayer, playCountdown)
+    : getDefaultLink(userLinkPlayer);
 
   return (
     <Section isActive={isActive}>
