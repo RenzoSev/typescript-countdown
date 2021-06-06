@@ -21,7 +21,7 @@ yarn start
 npm start
 ```
 ### Acces from Github Pages
-[Link to Countdown]()
+[Link to Countdown](https://renzosev.github.io/typescript-countdown/)
 
 ## 💻 Technologies and tools
 * TypeScript
