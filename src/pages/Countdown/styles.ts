@@ -41,8 +41,7 @@ export const Section = styled.section`
 
     @media(min-width: 768px) {
         & {
-            gap: 3rem;
-            padding-top: 5.5rem;
+            gap: 2.5rem;
 
             span {
                 font-size: 8.5rem; 
@@ -69,7 +68,7 @@ export const DivLottie = styled.div`
 
     @media(min-width: 768px) {
         & {
-            top: -4.5rem;
+            top: -5rem;
         }
     }
     
