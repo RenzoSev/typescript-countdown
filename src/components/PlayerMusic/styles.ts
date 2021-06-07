@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 interface playerProps {
   readonly isActive: boolean;
+  readonly isDesktop: boolean;
 }
 
 const Section = styled.section<playerProps>`
@@ -15,6 +16,20 @@ const Section = styled.section<playerProps>`
   border-radius: 4px;
 
   padding: 1.5rem;
+
+  label {
+    display: ${(props) => props.isDesktop ? 'flex' : 'none'};
+    
+    gap: 0.2rem;
+    align-items: center;
+    
+    font-size: 1rem;
+
+    input {
+      border-radius: 4px;
+      height: 0.8rem;
+    }
+  }
 
   input {
     background: ${(props) => props.theme.colors.primary};

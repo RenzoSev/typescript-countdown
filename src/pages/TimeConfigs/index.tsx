@@ -169,7 +169,7 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
             type="button"
             onClick={() => setTrybengers(!trybengers)}
           >
-            {trybengers ? 'Trybengers ON' : 'Trybengers OF'}
+            {trybengers ? 'Trybengers ON' : 'Trybengers OFF'}
           </button>
         </div>
       </main>
