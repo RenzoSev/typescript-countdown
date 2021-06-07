@@ -145,7 +145,7 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
   return (
     <Section>
       <ButtonChangePage>
-        <Link to="/">
+        <Link to="/typescript-countdown">
           <RiArrowGoBackLine />
         </Link>
       </ButtonChangePage>

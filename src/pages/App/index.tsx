@@ -73,7 +73,7 @@ const App: React.FC = () => {
         </DivSwitch>
         <GlobalStyle />
         <SwitchRouter>
-          <Route path="/settings">
+          <Route path="/typescript-countdown/settings">
             <TimeConfigs
               sharedProps={sharedProps}
               setConfigsProps={setConfigsProps}
@@ -82,7 +82,7 @@ const App: React.FC = () => {
               trybengers={trybengers}
             />
           </Route>
-          <Route path="/">
+          <Route path="/typescript-countdown">
             <Countdown
               sharedProps={sharedProps}
               trybengers={trybengers}

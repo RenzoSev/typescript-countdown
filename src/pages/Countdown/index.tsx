@@ -249,7 +249,10 @@ const CountDown = (propsCountDown: propsCountDownTypes) => {
   return (
     <>
       <ButtonChangePage disabled={playCountdown}>
-        <Link to={`${playCountdown ? '/' : '/settings'}`}>
+        <Link to={`${playCountdown
+          ? '/'
+          : '/typescript-countdown/settings'}`}
+        >
           <GoGear />
         </Link>
       </ButtonChangePage>

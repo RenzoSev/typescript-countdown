@@ -9,7 +9,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
-        <Route path="/" component={App} />
+        <Route path="/typescript-countdown" component={App} />
       </Switch>
     </Router>
   </React.StrictMode>,
