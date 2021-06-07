@@ -11,13 +11,14 @@ const Section = styled.section`
 
   div {
     display: flex;
+    letter-spacing: 1.5px;
     div {
       display: flex;
       flex-flow: column nowrap;
 
       button {
         background: transparent;
-        border: none;
+        border: 0;
         outline: none;
 
         font-size: 1.25rem;
@@ -37,6 +38,16 @@ const Section = styled.section`
 
         &:disabled {
           opacity: 15%;
+        }
+      }
+    }
+  }
+
+  @media(min-width: 768px) {
+    div {
+      div {
+        button {
+          font-size: 1.4rem;
         }
       }
     }

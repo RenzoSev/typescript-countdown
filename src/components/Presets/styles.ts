@@ -29,7 +29,7 @@ const DivPresets = styled.div`
 
     @media(min-width: 768px) {
         & {
-            width: 35%;
+            width: 30%;
         }
         
         & > button {

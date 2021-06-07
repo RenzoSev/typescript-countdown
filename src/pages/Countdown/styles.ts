@@ -44,7 +44,8 @@ export const Section = styled.section`
             gap: 2.5rem;
 
             span {
-                font-size: 8.5rem; 
+                font-size: 10rem;
+                line-height: 7.8rem;
             }
 
             & > main {
@@ -53,7 +54,17 @@ export const Section = styled.section`
         }
 
         & > button {
-            width: 29.8%;
+            width: 25%;
+            font-size: 1.2rem;
+            padding: 0.8rem;
+        }
+    }
+
+    @media(min-width: 1400px) {
+        & {
+            span {
+                line-height: 8.5rem;
+            }
         }
     }
 `;
@@ -68,7 +79,13 @@ export const DivLottie = styled.div`
 
     @media(min-width: 768px) {
         & {
-            top: -5rem;
+            top: -4.5rem;
+        }
+    }
+
+    @media(min-width: 1400px) {
+        & {
+            top: -5.6rem;
         }
     }
     
