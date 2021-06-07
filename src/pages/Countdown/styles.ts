@@ -34,6 +34,7 @@ export const Section = styled.section`
     span {
         font-weight: 600;
         font-size: 7rem;
+        line-height: 7.5rem;
 
         transition: all 0.3s;
     }
@@ -68,7 +69,7 @@ export const DivLottie = styled.div`
 
     @media(min-width: 768px) {
         & {
-            top: -5.5rem;
+            top: -4.5rem;
         }
     }
     

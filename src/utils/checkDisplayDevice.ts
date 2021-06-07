@@ -16,6 +16,6 @@ export const getLottieDevice = () => {
   const largeWidth = isLargeWidth ? 360 : 270;
 
   if (isSmallHeight) return 190;
-  if (isMediumHeight && isLargeWidth) return 340;
+  if (isMediumHeight && isLargeWidth) return 280;
   return largeWidth;
 };
