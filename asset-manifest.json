@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/typescript-countdown/static/js/main.5ed16cb9.chunk.js",
-    "main.js.map": "/typescript-countdown/static/js/main.5ed16cb9.chunk.js.map",
+    "main.js": "/typescript-countdown/static/js/main.09e54671.chunk.js",
+    "main.js.map": "/typescript-countdown/static/js/main.09e54671.chunk.js.map",
     "runtime-main.js": "/typescript-countdown/static/js/runtime-main.c516584a.js",
     "runtime-main.js.map": "/typescript-countdown/static/js/runtime-main.c516584a.js.map",
     "static/js/2.00f5a517.chunk.js": "/typescript-countdown/static/js/2.00f5a517.chunk.js",
@@ -15,6 +15,6 @@
   "entrypoints": [
     "static/js/runtime-main.c516584a.js",
     "static/js/2.00f5a517.chunk.js",
-    "static/js/main.5ed16cb9.chunk.js"
+    "static/js/main.09e54671.chunk.js"
   ]
 }
