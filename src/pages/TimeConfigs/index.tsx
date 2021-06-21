@@ -152,6 +152,8 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
 
       <main>
         <div>
+          <p>Presets</p>
+
           {renderPresets()}
 
           <button
@@ -160,6 +162,8 @@ export default function TimeConfigs(propsConfigs: TimeConfigsTypes) {
           >
             Save
           </button>
+
+          <p>Buttons</p>
 
           {renderInputMsg(inputsText.start)}
 

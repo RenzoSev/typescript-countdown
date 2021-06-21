@@ -35,6 +35,7 @@ export const Section = styled.section`
       display: flex;
       flex-flow: column nowrap;
       align-items: center;
+      justify-content: center;
       gap: 1.3rem;
 
       border: 1px solid ${(props) => props.theme.colors.primaryTransparent};
@@ -75,6 +76,7 @@ export const DivInputs = styled.div`
   background: ${(props) => props.theme.colors.background};
   border-radius: 5px;
   width: 70%;
+  max-width: 400px;
   
   padding: 0.6rem;
 
