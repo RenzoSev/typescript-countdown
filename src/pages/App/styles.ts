@@ -10,6 +10,12 @@ const DivSwitch = styled.div`
     & {
         padding: 1rem;
     }
+
+    @media(min-width: 1800px) {
+        & {
+            padding: 1.3rem;
+        }
+    }
 `;
 
 export default DivSwitch;

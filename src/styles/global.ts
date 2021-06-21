@@ -38,12 +38,17 @@ export default createGlobalStyle`
         text-decoration: none;
     }
 
+    @media(min-width: 1800px) {
+        html {
+            font-size: 100%;
+        }
+    }
+
     @media(min-width: 768px) {
         html {
             font-size: 90%;
         }
     }
-
 
     @media(max-height: 735px) {
         html {

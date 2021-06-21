@@ -78,7 +78,7 @@ export const Section = styled.section`
 
     & > button {
       width: 25%;
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       padding: 1rem;
     }
   }
@@ -144,5 +144,11 @@ export const DivIframe = styled.div<DivInframeProps>`
                 color: inherit;
             }
         }
+    }
+
+    @media(min-width: 1800px) {
+      & > button {
+        font-size: 2.5rem;
+      }
     }
 `;
