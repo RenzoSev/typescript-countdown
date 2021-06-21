@@ -12,9 +12,11 @@ export const getLottieDevice = () => {
   const isSmallHeight = checkDisplay('max', 'height', 568);
   const isMediumHeight = checkDisplay('max', 'height', 850);
   const isLargeWidth = checkDisplay('min', 'width', 768);
+  const isXlLargeWidth = checkDisplay('min', 'width', 1800);
 
   const largeWidth = isLargeWidth ? 360 : 270;
 
+  if (isXlLargeWidth) return 400;
   if (isSmallHeight) return 190;
   if (isMediumHeight && isLargeWidth) return 280;
   return largeWidth;
